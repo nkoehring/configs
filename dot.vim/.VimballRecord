@@ -1,0 +1,4 @@
+twitvim-0.4.1.vba: call delete('/home/psy/.vim/plugin/twitvim.vim')|call delete('/home/psy/.vim/doc/twitvim.txt')
+conque_term_1.0.vba: call delete('/home/psy/.vim/autoload/conque_term.vim')|call delete('/home/psy/.vim/doc/conque_term.txt')|call delete('/home/psy/.vim/plugin/conque_term.vim')|call delete('/home/psy/.vim/syntax/conque_term.vim')
+RltvNmbr.vba: call delete('/home/psy/.vim/plugin/RltvNmbr.vim')|call delete('/home/psy/.vim/plugin/RltvNmbrPlugin.vim')|call delete('/home/psy/.vim/doc/RltvNmbr.txt')|call delete('/home/psy/.vim/autoload/RltvNmbr.vim')
+csv-0.24.vmb: call delete('/home/nk/.vim/ftplugin/csv.vim')|call delete('/home/nk/.vim/doc/ft-csv.txt')|call delete('/home/nk/.vim/syntax/csv.vim')|call delete('/home/nk/.vim/ftdetect/csv.vim')|call delete('/home/nk/.vim/plugin/csv.vim')

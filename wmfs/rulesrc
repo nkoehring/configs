@@ -1,0 +1,29 @@
+[rules]
+
+  [rule]
+      # use instance = "*" for a all-clients rule
+      instance = "Navigator"
+      # role   = "browser"
+      # name   = ""
+      # theme  = "default"
+
+      tag    = 1  # 2nd tag
+      screen = 0
+
+      free       = false
+      tab        = false
+      ignore_tag = false
+  [/rule]
+
+  [rule]
+      instance = "feh"
+      tag    = 8
+      screen = 0
+      free       = false
+      tab        = false
+      ignore_tag = false
+  [/rule]
+
+[/rules]
+
+

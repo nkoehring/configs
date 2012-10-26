@@ -1,0 +1,112 @@
+#
+# WMFS2 configuration file
+#
+
+# Possible file inclusion:
+# @include "file"
+@include ~/.config/wmfs/keysrc
+@include ~/.config/wmfs/rulesrc
+@include ~/.config/wmfs/themesrc
+
+[bars]
+
+  # Position:
+  #
+  # 0  Top
+  # 1  Bottom
+  # 2  Hide
+
+  # Element type:
+  #
+  # t  Tags
+  # s  Statustext (will take available space)
+  # y  Systray (can be set only ONE time among all element)
+  # l  Launcher (will be expended at launcher use)
+
+  [bar]
+     position = 1
+     screen = 0
+     elements = "tlsy"   # element order in bar
+     theme = "default"
+  [/bar]
+
+# [bar]
+#    position = 0
+#    screen = 1
+#    elements = "ts"
+#    theme = "default"
+# [/bar]
+
+[/bars]
+
+[tags]
+
+  # Tag wrapping navigation
+  circular = false
+
+  # Use no screen option or screen = -1 to set tag on each screen
+  [tag]
+      screen = -1
+      name = "foo"
+      # statusline=""
+  [/tag]
+
+  [tag] name = "www" [/tag]
+  [tag] name = "3" [/tag]
+  [tag] name = "4" [/tag]
+  [tag] name = "5" [/tag]
+  [tag] name = "6" [/tag]
+  [tag] name = "7" [/tag]
+  [tag] name = "8" [/tag]
+  [tag] name = "feh" [/tag]
+
+  # Mousebinds associated to Tags element button
+  [mouse] button = "1" func = "tag_click" [/mouse]
+  [mouse] button = "4" func = "tag_next"  [/mouse]
+  [mouse] button = "5" func = "tag_prev"  [/mouse]
+
+
+[/tags]
+
+[client]
+
+  # Padding between clients (default: 0) :
+  padding = 0
+
+  # Give focus to new created client (default = false)
+  autofocus = false
+
+  theme = "default"
+  key_modifier = "Super"
+
+  # Focus type:
+  #  enter : focus follow mouse (default)
+  #  click : click to focus
+  #  everything-else : disable mouse focus support
+  focus = enter
+
+  [mouse] button = "1" func = "client_focus_click"    [/mouse]
+  [mouse] button = "1" func = "mouse_swap"            [/mouse]
+  [mouse] button = "2" func = "mouse_tab"             [/mouse]
+  [mouse] button = "3" func = "mouse_resize"          [/mouse]
+  [mouse] button = "4" func = "client_focus_next_tab" [/mouse]
+  [mouse] button = "5" func = "client_focus_prev_tab" [/mouse]
+
+[/client]
+
+[launchers]
+
+  # command can be an uicb function or an uicb function + extension (see example)
+  [launcher]
+     name = "exec"
+     prompt = ">>"
+
+     # Example of uicb + ext:
+     #   command = "spawn xterm -e"
+     command = "spawn"
+
+     width = 150
+  [/launcher]
+
+[/launchers]
+

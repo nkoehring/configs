@@ -1,0 +1,54 @@
+:insert
+%Vorlage von Jürgen Fenn
+
+\\documentclass[11pt]{dinbrief}
+
+\\usepackage{german}
+
+\\usepackage[T1]{fontenc}
+
+\\usepackage[utf8]{inputenc}
+
+\\usepackage{mathpazo} % Fuer Palatino auf 11pt umstellen!
+
+\\usepackage{url}
+
+
+
+\\backaddress{Back Address}
+
+\\nowindowrules                 %% keine Rahmen um das Adreßfenster
+
+
+\\begin{document}
+
+\\begin{letter} {HerrnFrauFirma\\ \\Straße\\9999 Stadt}
+
+\\centeraddress                 %% Vertikeles Zentrieren der Anschrift
+
+% \setreflinetop{120mm}        %% Oberkante Bezugszeichenzeile = Briefanfang
+% \yourmail{Empfänger & Co. }  %% Ihr Zeichen
+% \sign{Meine Firma}           %% Unser Zeichen
+% \phone{12345}{ 67890}        %% Unsere Durchwahl
+
+
+\\subject{Subject}
+
+\\opening{Sehr geehrte Damen und Herren,}
+
+
+%\pagebreak                    %% Seitenumbruch bei Bedarf
+
+
+\\closing{Mit freundlichen Grüßen,}
+
+%\ps{}                                  %% PS:
+%\encl{}                                %% Anlagen
+%\cc{}                                  %% Verteiler
+
+\\end{letter}
+
+
+\\end{document}
+
+.

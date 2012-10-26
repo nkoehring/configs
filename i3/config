@@ -1,0 +1,184 @@
+# This configuration uses Mod1 and Mod4. Make sure they are mapped properly using xev(1)
+# and xmodmap(1). Usually, Mod1 is Alt (Alt_L) and Mod4 is Windows (Super_L)
+
+# ISO 10646 = Unicode
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
+#font  -artwiz-nu.de-*-*-*-*-*-*-*-*-*-*-*-*
+
+# for i3-msg
+ipc-socket /tmp/i3-ipc.sock
+
+# Use Mouse+Mod1 to drag floating windows to their wanted position
+floating_modifier Mod1
+
+# Fullscreen (Mod1+f)
+bindsym Mod1+f fullscreen
+
+# change container layout (stacked, tabbed, default)
+bindsym Mod1+s layout stacking
+bindsym Mod1+w layout tabbed
+bindsym Mod1+e layout default
+
+# Toggle tiling/floating of the current window
+bindsym Mod4+space floating toggle
+
+# Go into the tiling layer / floating layer, depending on whether
+# the current window is tiling / floating (Mod1+t)
+bindsym Mod1+space focus mode_toggle
+
+# focus the parent container
+bindsym Mod1+a focus parent
+# focus the child container
+bindsym Mod1+d focus child
+
+# Focus (Mod4+<arrowkeys>)
+bindsym Mod4+Left focus left
+bindsym Mod4+Down focus down
+bindsym Mod4+Up focus up
+bindsym Mod4+Right focus right
+
+# Focus Container (Mod1+<arrowkeys>)
+bindsym Mod1+Left wch
+bindsym Mod1+Down wcj
+bindsym Mod1+Up wck
+bindsym Mod1+Right wcl
+
+# Snap (Mod1+Control+<arrowkeys>)
+bindsym Mod4+Control+Left sh
+bindsym Mod4+Control+Down sj
+bindsym Mod4+Control+Up sk
+bindsym Mod4+Control+Right sl
+
+# Move (Mod1+Shift+<arrowkeys>)
+bindsym Mod4+Shift+Left move left
+bindsym Mod4+Shift+Down move down
+bindsym Mod4+Shift+Up move up
+bindsym Mod4+Shift+Right move right
+
+# Move Container (Mod4+Shift+<arrowkeys>)
+bindsym Mod1+Shift+Left wcmh
+bindsym Mod1+Shift+Down wcmj
+bindsym Mod1+Shift+Up wcmk
+bindsym Mod1+Shift+Right wcml
+
+# Workspaces (Mod1+1/2/…)
+bindsym Mod1+1 workspace 1: foo
+bindsym Mod1+2 workspace 2: www
+bindsym Mod1+3 workspace 3: misc
+bindsym Mod1+4 workspace 4: mail
+bindsym Mod1+5 workspace 5
+bindsym Mod1+6 workspace 6
+bindsym Mod1+7 workspace 7
+bindsym Mod1+8 workspace 8
+bindsym Mod1+9 workspace 9: feh
+bindsym Mod1+0 workspace 10
+
+# Move to Workspaces
+bindsym Mod1+Shift+1 move workspace 1: foo
+bindsym Mod1+Shift+2 move workspace 2: www
+bindsym Mod1+Shift+3 move workspace 3: misc
+bindsym Mod1+Shift+4 move workspace 4: mail
+bindsym Mod1+Shift+5 move workspace 5
+bindsym Mod1+Shift+6 move workspace 6
+bindsym Mod1+Shift+7 move workspace 7
+bindsym Mod1+Shift+8 move workspace 8
+bindsym Mod1+Shift+9 move workspace 9: feh
+bindsym Mod1+Shift+0 move workspace 10
+
+# Mod1+Shift+q kills the current client
+bindsym Mod1+Shift+q kill
+
+# Mod1+v starts dmenu and launches the selected application
+# for now, we don’t have an own launcher
+bindsym Mod1+v exec /usr/bin/dmenu_run
+
+# reload the configuration file
+bindsym Mod1+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym Mod1+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym Mod1+Shift+e exit
+
+# split container
+bindsym Mod4+v split v
+bindsym Mod4+h split h
+
+# toggle border styles
+bindsym Mod1+b border toggle
+
+mode "resize" {
+  bindsym Left resize grow left
+  bindsym Shift+Left resize shrink left
+  bindsym Down resize grow bottom
+  bindsym Shift+Down resize shrink bottom
+  bindsym Up resize grow top
+  bindsym Shift+Up resize shrink top
+  bindsym Right resize grow right
+  bindsym Shift+Right resize shrink right
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym mod4+r mode "resize"
+
+# workspaces
+workspace "1: foo" output LVDS1
+workspace "2: www" output LVDS1
+workspace "3: misc" output LVDS1
+workspace "4: mail" output LVDS1
+workspace "5: stuff" output VGA1
+workspace "5: stuff" output HDMI1
+workspace "9: feh" output LVDS1
+
+# I want fixed window behaviours
+assign [class="^Firefox$"] → 2: www
+assign [class="pidgin"] → 3: misc
+assign [class="Examining"] → 10
+assign [class="Transferring"] → 10
+assign [class="^Thunderbird$"] → 4: mail
+assign [class="^feh$"] → 9: feh
+
+for_window [class="^Generator-gtk$"] floating enable
+for_window [class="^MPlayer$"] floating enable
+
+# program shortcuts
+bindcode Mod4+36 exec /usr/local/bin/urxvt
+#bindcode Mod4+46 exec /usr/bin/alock -bg shade:shade=20 -auth pam -cursor theme:name=xtr
+bindcode Mod4+46 exec /usr/bin/i3lock -i ~/pics/screensaver.png -p win
+bindcode Mod4+65 exec /usr/bin/uzbl-tabbed
+bindsym XF86WebCam exec /usr/bin/scrot -d 0
+bindsym XF86AudioRaiseVolume exec /usr/bin/vol_up
+bindsym XF86AudioLowerVolume exec /usr/bin/vol_down
+bindsym XF86AudioMute exec /usr/bin/mute_toggle
+
+# multimedia keys
+#bindsym XF86AudioLowerVolume exec 
+#bindsym XF86AudioRaiseVolume
+
+#bar {
+#  mode dock
+#  output LVDS1
+#  tray_output LVDS1
+#  status_command i3status --config ~/.config/i3/i3status
+#  position: bottom
+#  colors {
+#    background #000000
+#    statusline #AAAAAA
+#  }
+#}
+
+bar {
+  status_command i3status --config ~/.config/i3/i3status
+}
+
+# colors
+# class                 border  bg      fg
+client.unfocused        #333333 #000000 #777777
+client.focused          #AAAAAA #555555 #FFFFFF
+client.focused_inactive #AAAAAA #000000 #777777
+
+exec setxkbmap de
+exec source .fehbg
+exec archassistant
+## x.flux ...for a nicer feeling in the eyes
+exec redshift -l 51.332254:12.362 -t 6500K:4800K -m vidmode

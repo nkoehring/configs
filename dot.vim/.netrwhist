@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/nk/.gem/ruby/1.9.1/gems/liquid-2.3.0/lib'
+let g:netrw_dirhist_2='/home/nk/.gem/ruby/1.9.1/gems/liquid-2.3.0/lib/extras'
+let g:netrw_dirhist_3='/home/nk/.gem/ruby/1.9.1/gems/liquid-2.3.0/lib'
+let g:netrw_dirhist_4='/home/nk/devel/projects/SWS-Log'
+let g:netrw_dirhist_5='/home/nk/devel/homepage/portfolio'
+let g:netrw_dirhist_6='/home/nk/devel/homepage/portfolio/_layouts'
