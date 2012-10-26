@@ -22,20 +22,21 @@ Subtle::Contrib::Launcher.fonts = [
 
 C = {
   :orange => "#FD971F",
+  :mild_orange => "#A36D2E",
   :brown  => "#2D2815",
   :red    => "#F92672",
   :yellow => "#FECF35",
   :green  => "#A6E22E"
 }
 
-eval(IO.read('/home/nk/.config/subtle/options.rb'), binding)
-eval(IO.read('/home/nk/.config/subtle/gravities.rb'), binding)
-eval(IO.read('/home/nk/.config/subtle/styles.rb'), binding)
-eval(IO.read('/home/nk/.config/subtle/panel.rb'), binding)
-eval(IO.read('/home/nk/.config/subtle/grabs.rb'), binding)
-eval(IO.read('/home/nk/.config/subtle/tags.rb'), binding)
-eval(IO.read('/home/nk/.config/subtle/views.rb'), binding)
-eval(IO.read('/home/nk/.config/subtle/sublets.rb'), binding)
-eval(IO.read('/home/nk/.config/subtle/hooks.rb'), binding)
+load_config 'options.rb'
+load_config 'gravities.rb'
+load_config 'styles.rb'
+load_config 'panel.rb'
+load_config 'grabs.rb'
+load_config 'tags.rb'
+load_config 'views.rb'
+load_config 'sublets.rb'
+load_config 'hooks.rb'
 
 # vim:ts=2:bs=2:sw=2:et:fdm=marker

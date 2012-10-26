@@ -27,5 +27,4 @@ use_spacer right
 
 TEXT
 ${voffset 20}${color EAEAEA}${font Philosopher:pixelsize=120}${time %H:%M}${font}${voffset -77}${offset 10}${color1}${font Philosopher:pixelsize=42}${time %d} ${voffset -15}${color EAEAEA}${font Philosopher:pixelsize=22}${time %B} ${time %Y}${font}${voffset 27}${font Philosopher:pixelsize=58}${offset -173}${time %A}${font}
-${voffset 3}${offset 10}${font Ubuntu:pixelsize=13}${color1}ROOT $color${fs_used_perc /}%${offset 12}${color1}HOME $color${fs_used_perc /home}%${offset 12}${color1}RAM $color$memperc%${offset 12}${color1}LOAD $color${loadavg 1}${offset 12}${color1}BAT $color${smapi_bat_perc 0}% ${smapi bat 0 state} ${offset 12}${color1}TMP $color${acpitemp}°C
-${voffset 3}${offset 10}${mpd_smart}
+${voffset 3}${offset 10}${font Ubuntu:pixelsize=13}${color1}ROOT $color${fs_used_perc /}%${offset 12}${color1}HOME $color${fs_used_perc /home}%${offset 12}${color1}RAM $color$memperc%${offset 12}${color1}LOAD $color${loadavg 1} ${offset 12}${color1}TMP $color${acpitemp}°C

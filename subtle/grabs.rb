@@ -136,10 +136,10 @@ grab "W-S-s", :WindowStick
 grab "W-equal", :WindowZaphod
 
 # Raise window
-grab "W-r", :WindowRaise
+grab "W-plus", :WindowRaise
 
 # Lower window
-grab "W-l", :WindowLower
+grab "W-minus", :WindowLower
 
 # Select next windows
 grab "W-Left",  :WindowLeft
@@ -174,6 +174,7 @@ grab "W-c", [ :bottom_right, :bottom_right66, :bottom_right33 ]
 
 # Exec programs
 grab "W-Return", "urxvt"
+grab "W-l", "i3lock -i ~/pics/screensaver.png -p win"
 grab "W-p" do
   Subtle::Contrib::Launcher.run
 end

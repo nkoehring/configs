@@ -32,16 +32,22 @@ end
 
 # Style for the all views
 style :views do
-  foreground  "#757575"
+  foreground    "#757575"
+  border_top    C[:brown], 1
+  border_bottom C[:brown], 1
+  padding_top -2
+  padding_bottom -2
 
   # Style for the active views
   style :focus do
-    foreground  C[:orange]
+    foreground    C[:orange]
   end
 
   # Style for urgent window titles and views
   style :urgent do
     foreground  C[:red]
+    border_top    C[:mild_orange], 2
+    border_bottom C[:mild_orange], 2
   end
 
   # Style for occupied views (views with clients)
