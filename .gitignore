@@ -1,1 +1,4 @@
 system
+.*.swp
+.*.swo
+Session.vim
