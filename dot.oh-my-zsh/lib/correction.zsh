@@ -1,0 +1,1 @@
+/home/nk/.oh-my-zsh/custom/lib/correction.zsh
