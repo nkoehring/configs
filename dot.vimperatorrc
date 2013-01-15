@@ -1,0 +1,5 @@
+set gui=none
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+set visualbell=true
+set complete=Sltf
+set suggestengines=wikipedia
