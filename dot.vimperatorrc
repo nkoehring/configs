@@ -3,3 +3,4 @@ set hintchars=hjklasdfgyuiopqwertnmzxcvb
 set visualbell=true
 set complete=lStf
 set suggestengines=wikipedia
+colorscheme zenburn
