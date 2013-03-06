@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source .zsh/env
+#source .zsh/env
 xset +fp /usr/share/fonts/local
 xset fp rehash
 xset -b # disable bell
@@ -8,10 +8,13 @@ xset -b # disable bell
 #xmodmap ~/.Xmodmap
 #setxkbmap -layout de -option ctrl:nocaps
 
+# deactivate touchpad tapping when typing
+syndaemon -t -k -i 1 -d &
+
 # preload programs
-hash firefox conky && firefox &
-conky -b -d -c $XDG_CONFIG_HOME/conky/conkyrc &
-sh ~/.fehbg &
+hash firefox conky && #firefox &
+conky -b -d -c $HOME/.conkyrc &
+#sh ~/.fehbg &
 
 
 memu(){
@@ -56,6 +59,8 @@ do
 	sleep 5s
 done &
 
+xbindkeys
+sh ~/.fehbg
 mkdir -p .cache/dwm/
 while true; do
   dwm 2> ~/.cache/dwm/err
