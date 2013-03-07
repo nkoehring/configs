@@ -32,13 +32,18 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby archlinux bundler coffee compleat encode64 extract gem git-extras npm screen systemd urltools zsh-syntax-highlighting)
+plugins=(git ruby archlinux bundler coffee compleat encode64 extract gem git-extras npm screen systemd urltools zsh-syntax-highlighting pj)
 
 # Highlighters
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+# Project Paths for PJ
+PROJECT_PATHS=(~/src ~/src/projects)
 
 source $ZSH/oh-my-zsh.sh
 source $ZSH/lib/key-bindings.zsh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/home/nk/.gem/ruby/1.9.1/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/home/nk/.gem/ruby/1.9.1/bin:/home/nk/.gem/ruby/1.8/bin
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

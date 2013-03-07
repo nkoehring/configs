@@ -9,14 +9,10 @@ man-command ()
 
 sudo-command ()
 {
-	if [ -n "$BUFFER" ]
-	then
-		local FirstArg=`echo $BUFFER | awk '{print $1}'`
-		if [ "$FirstArg" != "sudo" ]
-		then
-			BUFFER="sudo $BUFFER"
-			zle end-of-line
-		fi
+    if [ -n "$BUFFER" -a "${BUFFER:0:4}" != "sudo" ]
+    then
+        BUFFER="sudo $BUFFER"
+        zle end-of-line
 	fi
 }
 
@@ -42,9 +38,18 @@ move-pointer-after-command ()
 	fi
 }
 
+# bmi calculator and it doesn't care if you start width height or width
+# eg: `bmi 65 1.8` and `bmi 1.8 65` is the same
 bmi ()
 {
-    echo $(($1/$2/$2))
+    local w=$1
+    local h=$2
+    if [[ $w -lt $h ]]
+    then
+        h=$1
+        w=$2
+    fi
+    echo $(($w/$h/$h))
 }
 
 zle -N man-command				# shows the man-page of the written command

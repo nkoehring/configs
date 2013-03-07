@@ -16,13 +16,18 @@ _collapsed_path() {
   PR_PWDLEN=""
   PR_GIT="$(git_prompt_info)"
   
+  local pwd=%~
   local promptsize=${#${(%):-(%n@%m)--}}
   local pwdsize=${#${(%):-%~}}
   local gitinfosize=${#${(%):-$PR_GIT}}
-  
-  if [[ "$promptsize + $pwdsize" -gt $TERMWIDTH ]]; then
-    ((PR_PWDLEN=$TERMWIDTH - $promptsize - $gitinfosize))
-  fi
+
+if [[ "$promptsize + $pwdsize" -gt $TERMWIDTH ]]; then
+    pwd=$(pwd | perl -pe "s|^$HOME|~|g; s|/([^/])[^/]*(?=/)|/\$1|g")
+    pwdsize=${#${(%):-$pwd}}
+    if [[ "$promptsize + $pwdsize" -gt $TERMWIDTH ]]; then
+        ((PR_PWDLEN=$TERMWIDTH - $promptsize - $gitinfosize))
+    fi
+fi
 
   echo "%$PR_PWDLEN<...<%~%<<"
 }

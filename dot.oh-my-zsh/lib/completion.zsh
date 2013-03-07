@@ -25,7 +25,9 @@ bindkey -M menuselect '^o' accept-and-infer-next-history
 
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
-zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
+#zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
+#zstyle ':completion:*:*:kill:*:processes' command "ps -u `whoami` --forest -e -o pid,user,tty,cmd"
+zstyle ':completion:*:*:kill:*:processes' command "ps xfo pid,user,tty,cmd"
 
 # disable named-directories autocompletion
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
