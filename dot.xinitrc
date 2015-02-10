@@ -1,67 +1,27 @@
-#!/bin/sh
+setxkbmap de
+xset -b
 
-#source .zsh/env
-xset +fp /usr/share/fonts/local
-xset fp rehash
-xset -b # disable bell
-#xrdb -merge $HOME/.Xresources
-#xmodmap ~/.Xmodmap
-#setxkbmap -layout de -option ctrl:nocaps
+# synaptics touchpad (order is important here)
+synclient RightButtonAreaLeft=4501
+synclient RightButtonAreaRight=0
+synclient RightButtonAreaTop=4100
+synclient RightButtonAreaBottom=0
+synclient MiddleButtonAreaRight=4500
+synclient MiddleButtonAreaLeft=2500
+synclient MiddleButtonAreaTop=4100
+synclient MiddleButtonAreaBottom=0
+xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Accel Profile" 2
+xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Accel Constant Deceleration" 4
+xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Accel Adaptive Deceleration" 4
+xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Accel Velocity Scaling" 8
 
-# deactivate touchpad tapping when typing
-syndaemon -t -k -i 1 -d &
+# syndaemon (disable touchpad while typing)
+syndaemon -Rtki 1 &
 
-# preload programs
-hash firefox conky && #firefox &
-conky -b -d -c $HOME/.conkyrc &
-#sh ~/.fehbg &
+# no eyestrain please
+xflux -l 52.3 -g 13.3 -r 1
 
+# sound
+#exec start-pulseaudio-x11
 
-memu(){
-    memu="$(free -m | sed -n 's|^-.*:[ \t]*\([0-9]*\) .*|\1|gp')"
-    echo "$memu"
-}
-memt(){
-    memt="$(free -m | sed -n 's|^M.*:[ \t]*\([0-9]*\) .*|\1|gp')"
-    echo "$memt"
-}
-cpu(){
-    cpu="$(eval $(awk '/^cpu /{print "previdle=" $5 "; prevtotal=" $2+$3+$4+$5 }' /proc/stat); sleep 0.4;
-	      eval $(awk '/^cpu /{print "idle=" $5 "; total=" $2+$3+$4+$5 }' /proc/stat);
-	      intervaltotal=$((total-${prevtotal:-0}));
-	      echo "$((100*( (intervaltotal) - ($idle-${previdle:-0}) ) / (intervaltotal) ))")"
-    echo "$cpu" 
-}
-
-
-while true
-do
-	LOCALTIME=$(date '+%Y-%m-%d %H:%M')
-	#IP=$(for i in `ip r`; do echo $i; done | grep -A 1 src | tail -n1) # can get confused if you use vmware
-    IPs=$(ip r list scope link proto kernel | awk '{print $3 ":" $5}')
-    IP=$(for x in $IPs; do echo -n $x" "; done)
-	TEMP="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
-    CPU=$(cpu)
-    MEM=$(($(memu)*100/$(memt)))
-
-	if acpi -a | grep off-line > /dev/null
-	then
-		BAT="\\$(acpi -b | awk '{ print $4 " " $5 }' | tr -d ',')/"
-	else
-        if acpi -a | grep Full > /dev/null
-        then
-            BAT=""
-        else
-            BAT="/$(acpi -b | awk '{ print $4 " " $5 }' | tr -d ',')\\"
-        fi
-	fi
-    xsetroot -name "$IP| CPU:$CPU% | MEM:$MEM% | $BAT | $TEMP | $LOCALTIME"
-	sleep 5s
-done &
-
-xbindkeys
-sh ~/.fehbg
-mkdir -p .cache/dwm/
-while true; do
-  dwm 2> ~/.cache/dwm/err
-done
+exec herbstluftwm

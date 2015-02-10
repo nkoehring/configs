@@ -5,11 +5,18 @@
 ! and others
 
 ! general settings:
-Xft.antialias:        true
+Xft.antialias: 0
+Xft.autohint:  0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting:   1
+Xft.rgba:      rgb
+Xft.dpi:       96
 ! colors:
 !     color settings... since I want the same ones for xterm I decided to remove every "urxvt"
 *foreground:          #cccccc
 *background:          #191919
+*font:                xft:monofur-24
 ! Black + Dark Grey
 ! was #222222 and/or #333333
 !*color0:             [90]#191919
@@ -80,76 +87,7 @@ urxvt.urlLauncher:      /usr/bin/vimprobable2
 urxvt.scrollstyle:      plain
 urxvt.scrollBar:        false
 
-URxvt.font: xft:monofur:pixelsize=16:,xft:AR PL UMing CN:pixelsize=12,xft:Arial Unicode MS:pixelsize=12,xft:Dejavu Sans:pixelsize=12:
-!URxvt*font:  -*-pixelcarnage monospace-*-*-*-*-*-*-*-*-*-*-*-*
-!Rxvt*font:         xft:Bitstream Vera Sans Mono:pixelsize=11
-!Rxvt*font:         -*-optismall-*-*-*-*-*-*-*-*-*-*-*-*
-!URxvt*font:  -artwiz-cure.de-*-*-*-*-*-*-*-*-*-*-*-*
-!URxvt*font:  7x13
-!URxvt.font: xft:inconsolata-g:pixelsize=12,xft:AR PL UMing CN:pixelsize=10
-!URxvt*font:  -*-pixelcarnage monospace-*-*-*-*-*-*-*-*-*-*-*-*
-!URxvt.font: xft:Dejavu Sans Mono:pixelsize=12,xft:AR PL UMing CN:pixelsize=10,xft:Arial Unicode MS:pixelsize=12,xft:Dejavu Sans:pixelsize=12:
-!urxvt.font:                          -*-proggytiny-*-*-*-*-*-*-*-*-*-*-*-*
 URxvt*matcher.button:     3
 !URxvt.keysym.C-minus: command:\033]50;xft:Monospace:size=10:antialias=true\007
 URxvt.keysym.C-minus: perl:mark-yank-urls:activate_mark_mode
 
-
-xosview*captions:       True
-xosview*font:           -*-lucida-*-r-*-*-8-*-*-*-*-*-*-*
-
-xosview*cpu:            True
-xosview*mem:            True
-xosview*net:            True
-xosview*disk:           True
-xosview*load:           True
-xosview*swap:           True
-xosview*page:           True
-xosview*gfx:            True
-xosview*NFSStats:       False
-xosview*NFSDStats:      False
-xosview*serial(0-9):    True
-xosview*interrupts:     False
-xosview*lmstemp:        False
-xosview*battery:        True
-xosview*RAID:           False
-
-xosview*foreground:         #282828
-xosview*background:         #000000
-xosview*borderwidth:        0
-
-xosview*usedlabels:         False
-xosview*labels:             True
-
-xosview*meterLabelColor:    #888888
-xosview*usedLabelColor:     #ffffff
-
-xosview*memUsedFormat:      autoscale
-xosview*memUsedColor:       #a9cc92
-xosview*memFreeColor:       #383838
-xosview*memBufferColor:     #181818
-xosview*memCacheColor:      #181818
-
-xosview*swapUsedFormat:     autoscale
-xosview*swapUsedColor:      #a9cc92
-xosview*swapFreeColor:      #383838
-
-xosview*cpuUserColor:       #a9cc92
-xosview*cpuFreeColor:       #383838
-xosview*cpuNiceColor:       #889955
-xosview*cpuSystemColor:     #889955
-xosview*cpuInterruptColor:  #ff0000
-
-xosview*netIface:           wlan0
-xosview*netInColor:         #a9cc92
-xosview*netOutColor:        #bb0000
-xosview*netBackground:      #383838
-
-xosview*diskUsedColor:      #a9cc92
-xosview*diskWriteColor:     #bb0000
-xosview*diskReadColor:      #00bb00
-xosview*diskIdleColor:      #383838
-
-xosview*pageIdleColor:      #383838
-
-xosview*batteryUsedColor:   #383838

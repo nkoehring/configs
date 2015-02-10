@@ -1,1 +1,0 @@
-/home/nk/.oh-my-zsh/custom/lib/key-bindings.zsh
