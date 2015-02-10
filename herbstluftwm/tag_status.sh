@@ -8,6 +8,7 @@ tags() {
         case $status in
             '#')
                 title=$(herbstclient attr clients.focus.title)
+                [ "$title" = "" ] && title="$tag_id"
                 [ ${#title} -ge 30 ] && title="${title:0:29}…"
                 item="<fc=gray50>[</fc><fc=#ffee00>$title</fc><fc=gray50>]</fc>"
                 ;;
