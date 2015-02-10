@@ -18,8 +18,8 @@ tags() {
             '.')
                 item="<fc=gray20>[$tag_id]</fc>"
                 ;;
-            '*')
-                item="<fc=gray50>[</fc><fc=gray50>$tag_id</fc><fc=gray50>]</fc>"
+            *)
+                item="<fc=gray50>[$tag_id]</fc>"
                 ;;
         esac
         action="<action=`echo herbstclient use $tag_id`>$item</action>"
