@@ -12,9 +12,18 @@ Plug 'digitaltoad/vim-jade'
 Plug 'wavded/vim-stylus'
 Plug 'wting/rust.vim'
 Plug 'farseer90718/vim-taskwarrior'
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 
+nnoremap <silent> <F12> :TagbarToggle<CR>
+let g:tagbar_left = 1
+let g:tagbar_width = 35
+let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 1
+let g:tagbar_indent = 2
+let g:tagbar_show_linenumbers = 1
+let g:tagbar_iconchars = ['►', '▼']
 let g:ackprg = 'ag --nogroup --nocolor --column'
 colorscheme xoria256
 
