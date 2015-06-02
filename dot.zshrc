@@ -1,34 +1,37 @@
 bindkey -v
 source ~/.profile
-source /usr/share/zsh/scripts/antigen/antigen.zsh
+source /usr/share/zsh/scripts/zgen/zgen.zsh
 
 COMPLETION_WAITING_DOTS="true"
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 ZSH_HIGHLIGHT_PATTERNS+=('rm -fr *' 'fg=white,bold,bg=red')
-PROJECT_PATHS=(~/sources ~/sources/*)
+PROJECT_PATHS=(~/private ~/private/* ~/blacklane)
 
 
-antigen use oh-my-zsh
+if ! zgen saved; then
+    echo "running zgen"
 
-antigen bundle git
-antigen bundle git-extras
-antigen bundle ruby
-antigen bundle archlinux
-antigen bundle coffee
-antigen bundle compleat
-antigen bundle encode64
-antigen bundle extract
-antigen bundle gem
-antigen bundle npm
-antigen bundle screen
-antigen bundle systemd
-antigen bundle urltools
-antigen bundle pj
+    zgen oh-my-zsh
 
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zaw
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen theme https://gist.github.com/9263734.git psy
+    zgen oh-my-zsh plugins/git
+    zgen oh-my-zsh plugins/git-extras
+    zgen oh-my-zsh plugins/ruby
+    zgen oh-my-zsh plugins/coffee
+    zgen oh-my-zsh plugins/archlinux
+    zgen oh-my-zsh plugins/extract
+    zgen oh-my-zsh plugins/screen
+    zgen oh-my-zsh plugins/sudo
+    zgen oh-my-zsh plugins/systemd
+    zgen oh-my-zsh plugins/pj
+    zgen oh-my-zsh plugins/command-not-found
 
-antigen apply
-source /usr/share/zsh-dwim/init.zsh
+    zgen load zsh-users/zsh-syntax-highlighting
+    zgen load zsh-users/zaw
+    zgen load zsh-users/zsh-completions src
+
+    zgen load https://gist.github.com/9263734.git psy
+
+    zgen save
+fi
+
+#antigen theme https://gist.github.com/9263734.git psy
