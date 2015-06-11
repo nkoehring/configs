@@ -2,5 +2,6 @@ set gui=none
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
 set visualbell=true
 set complete=lStf
-set suggestengines=wikipedia
+set defsearch=duckduckgo
+set suggestengines=duckduckgo,wikipedia
 colorscheme zenburn
