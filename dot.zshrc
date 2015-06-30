@@ -4,8 +4,9 @@ source /usr/share/zsh/scripts/zgen/zgen.zsh
 
 COMPLETION_WAITING_DOTS="true"
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-ZSH_HIGHLIGHT_PATTERNS+=('rm -fr *' 'fg=white,bold,bg=red')
-PROJECT_PATHS=(~/private ~/private/* ~/blacklane)
+ZSH_HIGHLIGHT_PATTERNS+=('rm -fr*' 'fg=white,bold,bg=red')
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf*' 'fg=white,bold,bg=red')
+PROJECT_PATHS=(~/private ~/work)
 
 
 if ! zgen saved; then
@@ -33,5 +34,3 @@ if ! zgen saved; then
 
     zgen save
 fi
-
-#antigen theme https://gist.github.com/9263734.git psy
