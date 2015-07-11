@@ -2,18 +2,11 @@ bindkey -v
 source ~/.profile
 source /usr/share/zsh/scripts/zgen/zgen.zsh
 
-COMPLETION_WAITING_DOTS="true"
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-ZSH_HIGHLIGHT_PATTERNS+=('rm -fr*' 'fg=white,bold,bg=red')
-ZSH_HIGHLIGHT_PATTERNS+=('rm -rf*' 'fg=white,bold,bg=red')
-PROJECT_PATHS=(~/private ~/work)
-
 
 if ! zgen saved; then
     echo "running zgen"
 
     zgen oh-my-zsh
-
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/git-extras
     zgen oh-my-zsh plugins/ruby
@@ -25,6 +18,8 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/systemd
     zgen oh-my-zsh plugins/pj
     zgen oh-my-zsh plugins/command-not-found
+    zgen oh-my-zsh plugins/encode64
+    zgen oh-my-zsh plugins/urltools
 
     zgen load zsh-users/zsh-syntax-highlighting
     zgen load zsh-users/zaw
@@ -34,3 +29,12 @@ if ! zgen saved; then
 
     zgen save
 fi
+
+
+COMPLETION_WAITING_DOTS="true"
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+ZSH_HIGHLIGHT_PATTERNS+=('rm -fr*' 'fg=white,bold,bg=red')
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf*' 'fg=white,bold,bg=red')
+PROJECT_PATHS=(~/sources ~/sources/*)
+
+alias tm=todotxt-machine
