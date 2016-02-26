@@ -1,4 +1,4 @@
-set gui=none
+set toolbars=none
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
 set visualbell=true
 set complete=lStf

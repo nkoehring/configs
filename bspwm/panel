@@ -1,0 +1,35 @@
+#! /bin/sh
+
+if [ $(pgrep -cx panel) -gt 1 ] ; then
+	printf "%s\n" "The panel is already running." >&2
+	exit 1
+fi
+
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+PANEL_FIFO=/tmp/panel-fifo
+PANEL_HEIGHT=24
+PANEL_FONT_FAMILY="-*-lucidatypewriter-medium-*-*-*-26-*-*-*-*-*-*-*"
+
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
+bspc config top_padding $PANEL_HEIGHT
+bspc control --subscribe > "$PANEL_FIFO" &
+xtitle -sf 'T%s' > "$PANEL_FIFO" &
+while :; do
+  _state=$(battery -f '%s')
+  state=""
+  [ $_state = "Discharging" ] && state="↓"
+  [ $_state = "Charging" ] && state="↑"
+  echo "SBAT $state$(battery -f '%i')%%  $(clock -f '%a, %Y-%m-%d %H:%M')" > "$PANEL_FIFO"
+  sleep 1
+done &
+#battery -sf 'Battery %s %i%%' > "$PANEL_FIFO" &
+#clock -sf '%a, Y-%m-%d %H:%M' > "$PANEL_FIFO" &
+
+. $HOME/.config/bspwm/panel_colors
+
+cat "$PANEL_FIFO" | panel_bar | lemonbar -g x$PANEL_HEIGHT -f "$PANEL_FONT_FAMILY" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" &
+
+wait
