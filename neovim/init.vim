@@ -1,18 +1,15 @@
-call plug#begin('~/.nvim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
-Plug 'kchmck/vim-coffee-script'
-Plug 'tpope/vim-haml'
 Plug 'tpope/vim-speeddating'
 Plug 'kien/ctrlp.vim'
 Plug 'spolu/dwm.vim'
 Plug 'mileszs/ack.vim'
-Plug 'sunaku/xoria256.vim'
 Plug 'mattn/emmet-vim'
-Plug 'digitaltoad/vim-jade'
-Plug 'wavded/vim-stylus'
-Plug 'wting/rust.vim'
-Plug 'farseer90718/vim-taskwarrior'
+Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
+Plug 'freitass/todo.txt-vim'
+Plug 'jnurmine/zenburn'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -25,12 +22,14 @@ let g:tagbar_indent = 2
 let g:tagbar_show_linenumbers = 1
 let g:tagbar_iconchars = ['►', '▼']
 let g:ackprg = 'ag --nogroup --nocolor --column'
-colorscheme xoria256
+let mapleader=' '
+let maplocalleader=' '
+colorscheme zenburn
 
 set expandtab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 set encoding=utf-8
 set textwidth=79
 set colorcolumn=80
@@ -39,5 +38,6 @@ set laststatus=2
 set number
 set wildmenu
 set wildmode=list:longest,full
+set hlsearch
 "set cryptmethod=blowfish
-set t_Co=256
+"set t_Co=256
