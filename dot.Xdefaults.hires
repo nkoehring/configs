@@ -5,18 +5,20 @@
 ! and others
 
 ! general settings:
-Xft.antialias: 1
+Xft.antialias: 0
 Xft.autohint:  0
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintfull
 Xft.hinting:   1
 Xft.rgba:      rgb
-Xft.dpi:       96
+Xft.dpi:       180
 ! colors:
 !     color settings... since I want the same ones for xterm I decided to remove every "urxvt"
 *foreground:          #cccccc
 *background:          #191919
-*font:                xft:monofur for powerline-12
+*font:                xft:monofur for powerline-14
+!xterm likes xft only as faceName
+*faceName:            xft:monofur for powerline-12
 ! Black + Dark Grey
 ! was #222222 and/or #333333
 !*color0:             [90]#191919
