@@ -11,6 +11,7 @@ export QT_DEVICE_PIXEL_RATIO=2
 alias xi="sudo xbps-install"
 alias xq="xbps-query -Rs"
 alias xqi="xbps-query -RS"
+alias xql="xbps-query -s"
 
 test "$TERM" = "screen" && export TERM=screen-256color
 test `tty` = /dev/tty1 -a $USER != root -a ! -e /tmp/.X0-lock && startx && exit

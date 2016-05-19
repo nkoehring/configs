@@ -1,0 +1,59 @@
+separator=false
+separator_block_width=5
+border_top=0
+border_left=0
+border_right=0
+border_bottom=4
+
+#[updates]
+#command=$HOME/scripts/updates.sh
+#interval=60
+#signal=2
+#urgent=true
+
+[window]
+command=xtitle -s
+interval=persist
+separator=true
+separator_block_width=45
+border=#ebdbb2
+
+[volume]
+label=    
+command=[[ -z "${BLOCK_BUTTON}" ]] || ( [[ "${BLOCK_BUTTON}" == "1" ]] && ((/usr/bin/pavucontrol -t 3 || true) && $HOME/src/scripts/volume_control.py signal) || $HOME/src/scripts/volume_control.py toggle ); $HOME/src/scripts/volume_control.py i3blocks
+interval=5
+signal=1
+markup=pango
+border=#cc241d
+
+[brightness]
+label=    
+command=printf "%.0f " $(xbacklight -get)
+interval=10
+signal=2
+border=#d79921
+
+[temperature]
+label=   
+command=echo "$($HOME/src/scripts/temperature.sh 'Core 0') $($HOME/src/scripts/temperature.sh 'Core 1') "
+interval=5
+border=#b16286
+
+[wireless]
+label=    
+command=[[ -z "$(iwgetid -r)" ]] || echo "$(iwgetid -r) "
+interval=2
+border=#98971a
+
+[battery]
+command=$HOME/src/scripts/battery.sh
+interval=10
+border=#458588
+
+[time]
+label=    
+command=echo "`date +'%Y-%m-%d'` <b>`date +'%H:%M'`</b> "; [[ "${BLOCK_BUTTON}" = "1" ]] && notify-send -t 5000 "`cal`" &
+interval=1
+markup=pango
+border=#928374
+separator_block_width=0

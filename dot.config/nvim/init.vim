@@ -10,6 +10,7 @@ Plug 'majutsushi/tagbar'
 Plug 'freitass/todo.txt-vim'
 Plug 'jnurmine/zenburn'
 Plug 'sheerun/vim-polyglot'
+Plug 'jimmyhchan/dustjs.vim'
 
 call plug#end()
 

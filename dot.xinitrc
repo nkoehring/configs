@@ -1,5 +1,7 @@
 setxkbmap de
 xset -b
+xrdb -merge .Xdefaults
+xsetroot -solid black -cursor_name left_ptr
 
 synclient RightButtonAreaLeft=4501
 synclient RightButtonAreaRight=0
@@ -14,6 +16,4 @@ syndaemon -Rtki 1 &       # disable touchpad while typing
 redshift -l 52.3:13.3 &   # no eyestrain please
 [ -x ~/.fehbg ] && ~/.fehbg
 compton --config ~/.config/comptonrc -b
-exec sxhkd &              # shortcuts
-exec panel &              # panel
-exec bspwm
+exec i3
