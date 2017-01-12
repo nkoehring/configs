@@ -13,6 +13,7 @@ alias xi="sudo xbps-install"
 alias xq="xbps-query -Rs"
 alias xqi="xbps-query -RS"
 alias xql="xbps-query -s"
+alias xqf="xbps-query -f"
 alias howto="howdoi -c"
 
 if [ `tty` = /dev/tty1 -a $USER != root -a ! -e /tmp/.X0-lock ]
