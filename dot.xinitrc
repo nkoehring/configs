@@ -15,5 +15,7 @@ syndaemon -Rtki 1 &       # disable touchpad while typing
 xcalib -d :0 ~/.config/icc/natural.icm
 redshift -l 52.3:13.3 &   # no eyestrain please
 [ -x ~/.fehbg ] && ~/.fehbg
+autocutsel -f &
+autocutsel -selection PRIMARY -fork &
 compton --config ~/.config/comptonrc -b
 exec i3
