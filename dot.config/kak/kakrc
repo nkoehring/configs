@@ -1,0 +1,51 @@
+colorscheme zenburn
+set global scrolloff 5,5
+set global tabstop 2
+set global indentwidth 2
+set global incsearch true
+set global aligntab true
+set global ui_options ncurses_assistant=cat
+
+# hooks to show line numbers, whitespaces and matching brackets
+hook -group DefaultHighlights global WinCreate .* %{
+  addhl number_lines -hlcursor -separator '  '
+  addhl show_whitespaces
+  addhl show_matching
+  addhl regex '\h+$' 0:default,red    # show all trailing whispaces red
+}
+
+# map tmux split and window commands in vim style
+def -file-completion -params 1 tabe %{ tmux-new-window edit %arg{1} }
+def -file-completion -params 1 vsplit %{ tmux-new-vertical edit %arg{1} }
+#map global insert ctrl-n '<esc>:new<ret>'
+#map global normal ctrl-n ':new<ret>'
+
+#def fedit -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} }
+#alias global fe fedit
+
+def -docstring 'invoke fzf to open a file' \
+  fzf-file %{ %sh{
+    if [ -z "$TMUX" ]; then
+      echo echo only works inside tmux
+    else
+      FILE=`fzf-tmux -d 15`
+      if [ -n "$FILE" ]; then
+        echo "eval -client '$kak_client' 'edit ${FILE}'" | kak -p ${kak_session}
+      fi
+    fi
+}}
+
+def -docstring 'invoke fzf to select a buffer' \
+  fzf-buffer %{ %sh{
+    if [ -z "$TMUX" ]; then
+      echo echo only works inside tmux
+    else
+      BUFFER=`echo ${kak_buflist} | tr : '\n' | fzf-tmux -d 15`
+      if [ -n "$BUFFER" ]; then
+        echo "eval -client '$kak_client' 'buffer ${BUFFER}'" | kak -p ${kak_session}
+      fi
+    fi
+}}
+
+alias global ffe fzf-file
+alias global ffb fzf-buffer
