@@ -1,51 +1,43 @@
-colorscheme zenburn
+colorscheme desertex
 set global scrolloff 5,5
-set global tabstop 2
-set global indentwidth 2
 set global incsearch true
 set global aligntab true
-set global ui_options ncurses_assistant=cat
+set global ui_options ncurses_assistant=none:ncurses_change_colors=true
+# set global autoinfo normal|command|onkey  ## always show info box for every command key
+set global grepcmd 'rg --column'
 
-# hooks to show line numbers, whitespaces and matching brackets
-hook -group DefaultHighlights global WinCreate .* %{
-  addhl number_lines -hlcursor -separator '  '
-  addhl show_whitespaces
-  addhl show_matching
-  addhl regex '\h+$' 0:default,red    # show all trailing whispaces red
+map global insert <tab> '  '
+
+# with inspiration from
+# https://github.com/Delapouite/dotfiles/blob/master/link/kak/kakrc
+set global modelinefmt %{
+  %val{bufname} [%opt{filetype}]
+· %val{cursor_line}:%val{cursor_char_column}
+· {{context_info}} {{mode_info}}
 }
 
-# map tmux split and window commands in vim style
-def -file-completion -params 1 tabe %{ tmux-new-window edit %arg{1} }
-def -file-completion -params 1 vsplit %{ tmux-new-vertical edit %arg{1} }
-#map global insert ctrl-n '<esc>:new<ret>'
-#map global normal ctrl-n ':new<ret>'
+addhl -group / group trailing_white_spaces
+addhl -group /trailing_white_spaces regex \h+$ 0:Error
 
-#def fedit -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} }
-#alias global fe fedit
+hook global InsertBegin .* %{
+  rmhl trailing_white_spaces
+  # echo -color Information '— INSERT —'
+}
 
-def -docstring 'invoke fzf to open a file' \
-  fzf-file %{ %sh{
-    if [ -z "$TMUX" ]; then
-      echo echo only works inside tmux
-    else
-      FILE=`fzf-tmux -d 15`
-      if [ -n "$FILE" ]; then
-        echo "eval -client '$kak_client' 'edit ${FILE}'" | kak -p ${kak_session}
-      fi
-    fi
+hook global InsertEnd .* %{
+  addhl ref trailing_white_spaces
+  lint
+}
+
+# ← system clipboard
+map global user y '<a-|>xsel --input --clipboard<ret>; :echo -color Information "copied selection to X11 clipboard"<ret>' -docstring 'yank from clipboard'
+map global user p '<a-!>xsel --output --clipboard<ret>' -docstring 'replace from clipboard'
+map global user P '!xsel --output --clipboard<ret>' -docstring 'print from clipboard'
+
+# → system clipboard
+hook global NormalKey y|d|c %{ nop %sh{
+  printf %s "$kak_reg_dquote" | xsel --input --clipboard
 }}
 
-def -docstring 'invoke fzf to select a buffer' \
-  fzf-buffer %{ %sh{
-    if [ -z "$TMUX" ]; then
-      echo echo only works inside tmux
-    else
-      BUFFER=`echo ${kak_buflist} | tr : '\n' | fzf-tmux -d 15`
-      if [ -n "$BUFFER" ]; then
-        echo "eval -client '$kak_client' 'buffer ${BUFFER}'" | kak -p ${kak_session}
-      fi
-    fi
-}}
-
-alias global ffe fzf-file
-alias global ffb fzf-buffer
+def -docstring 'ripgrep in current dir' \
+find -params 1 -shell-candidates %{ rg --files } %{ edit %arg{1} }
