@@ -15,11 +15,9 @@ if ! zgen saved; then
   zgen load zsh-users/zaw
   zgen load zsh-users/zsh-completions src
 
-  zgen load https://gist.github.com/9263734.git psy
-
   zgen save
 fi
-
+source ~/.zsh/koehr.theme.zsh
 setopt HIST_IGNORE_DUPS
 
 COMPLETION_WAITING_DOTS="true"
@@ -28,6 +26,3 @@ ZSH_HIGHLIGHT_PATTERNS+=('rm -fr*' 'fg=white,bold,bg=red')
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf*' 'fg=white,bold,bg=red')
 
 PROJECT_PATHS=(~/src ~/src/*)
-
-export NVM_DIR="/home/nk/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
