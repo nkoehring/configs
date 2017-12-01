@@ -35,8 +35,8 @@ _collapsed_path() {
 
 CC_ORANGE='208'
 CC_BLUE='33'
-CC_RED='160'
-CC_GREEN='40'
+CC_RED='1'
+CC_GREEN='2'
 CC_GRAY1='236'
 CC_GRAY2='238'
 CC_GRAY3='240'
