@@ -14,7 +14,7 @@ Xft.rgba:      rgb
 Xft.dpi:       192
 
 *font:                xft:monofur for powerline-14
-*faceName:            xft:monofur for powerline-12
+*faceName:            xft:monofur for powerline-14
 
 ! colours
 ! --- generated with 4bit Terminal Color Scheme Designer -----------------------
@@ -129,10 +129,10 @@ URxvt.keysym.C-minus: perl:mark-yank-urls:activate_mark_mode
 
 rofi.pid:  /run/user/1000/rofi.pid
 rofi.modi: run
-rofi.font: monofur for powerline 16
+rofi.font: monofur for powerline 20
 rofi.width: 100
-rofi.lines: 5
-rofi.columns: 1
+rofi.lines: 3
+rofi.columns: 3
 rofi.opacity: 80
 ! rofi.color-enabled: true
 !              bg       fg      altbg    hlbg     hlfg
@@ -140,11 +140,12 @@ rofi.opacity: 80
 ! rofi.urgent: #1d2021, #ebdbb2, #1d2021, #ebdbb2, #1d2021
 ! rofi.active: #1d2021, #ebdbb2, #1d2021, #ebdbb2, #1d2021
 ! rofi.color-window: #1d2021, #1d2021
-rofi.fg: #ebdbb2
 rofi.bg: #1d2021
+rofi.fg: #ebdbb2
 rofi.hlfg: #1d2021
 rofi.hlbg: #ebdbb2
 rofi.bw: 0
 rofi.location: 2
-rofi.padding: 100
+rofi.padding: 50
 rofi.fuzzy: false
+rofi.theme: glue_pro_blue
