@@ -43,8 +43,8 @@ CC_GRAY3='240'
 CC_BLACK='232'
 CC_WHITE='255'
 
-CC_CPROMPT="%k%f%K{$CC_BLACK}%F{$CC_BLUE}"
-CC_CRPROMPT="%k%f%F{$CC_BLUE}"
+CC_CPROMPT="%k%f%F{$CC_ORANGE}"
+CC_CRPROMPT="%k%f%F{$CC_ORANGE}"
 CC_CGITPROMPT="%k%f%F{$CC_GRAY3}"
 CC_CWARN="%k%f%K{$CC_BLACK}%F{$CC_RED}"
 
@@ -85,4 +85,4 @@ if [ "$CC_HOSTNAME" = 'liz' ]; then
 fi
 
 RPROMPT='$(git_prompt_info)'"$CC_CRPROMPT $(_collapsed_path)%{$reset_color%}"
-PROMPT="%(?.$CC_CPROMPT $CC_HOSTNAME .$CC_CWARN·%?·)$CC_DRAW_IN_BLACK$CC_SYMBOL_RIGHT_ARROW%f"'%{$reset_color%} ' #$CC_CURRENT_PATH "'$(git_prompt)'" $CC_DRAW_IN_GRAY$CC_SYMBOL_RIGHT_ARROW%f "
+PROMPT="%(?.$CC_CPROMPT$CC_HOSTNAME .$CC_CWARN·%?·)$CC_WRITE_IN_GRAY$CC_SYMBOL_RIGHT_LIGHT_ARROW%f"'%{$reset_color%} ' #$CC_CURRENT_PATH "'$(git_prompt)'" $CC_DRAW_IN_GRAY$CC_SYMBOL_RIGHT_ARROW%f "
