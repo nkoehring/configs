@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-char font[] = "monofur for powerline-14:antialias=true:autohint=true";
-int borderpx = 2;
+char font[] = "monofur for powerline-14:antialias=false:autohint=true";
+int borderpx = 16;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -65,21 +65,6 @@ static int bellvolume = 0;
 /* default TERM value */
 char termname[] = "st-256color";
 
-/*
- * spaces per tab
- *
- * When you are changing this value, don't forget to adapt the »it« value in
- * the st.info and appropriately install the st.info in the environment where
- * you use this st version.
- *
- *	it#$tabspaces,
- *
- * Secondly make sure your kernel is not expanding tabs. When running `stty
- * -a` »tab0« should appear. You can tell the terminal to not expand tabs by
- *  running following command:
- *
- *	stty tabs
- */
 static unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
@@ -116,10 +101,10 @@ const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
-unsigned int defaultcs = 256;
-unsigned int defaultrcs = 257;
+unsigned int defaultfg = 252;
+unsigned int defaultbg = 236;
+unsigned int defaultcs = 208;
+unsigned int defaultrcs = 0;
 
 /*
  * Default shape of cursor
@@ -141,14 +126,17 @@ unsigned int rows = 24;
  * Default colour and shape of the mouse cursor
  */
 unsigned int mouseshape = XC_xterm;
-unsigned int mousefg = 7;
+unsigned int mousefg = 208;
 unsigned int mousebg = 0;
 
 /*
- * Color used to display font attributes when fontconfig selected a font which
- * doesn't match the ones requested.
+ * Colors used, when the specific fg == defaultfg. So in reverse mode this
+ * will reverse too. Another logic would only make the simple feature too
+ * complex.
  */
 unsigned int defaultattr = 11;
+unsigned int defaultitalic = 11;
+unsigned int defaultunderline = 7;
 
 /*
  * Internal mouse shortcuts.
