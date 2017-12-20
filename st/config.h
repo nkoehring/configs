@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-char font[] = "monofur for powerline-14:antialias=false:autohint=true";
+char font[] = "Monofur Nerd Font Mono-14:antialias=false:autohint=true";
 int borderpx = 16;
 
 /*
