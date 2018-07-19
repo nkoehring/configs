@@ -1,12 +1,12 @@
 colorscheme desertex
-set global scrolloff 5,5
-set global incsearch true
-set global aligntab true
-set global ui_options ncurses_assistant=none:ncurses_change_colors=true
-# set global autoinfo normal|command|onkey  ## always show info box for every command key
-set global grepcmd 'rg --column'
+set-option global scrolloff 5,5
+set-option global incsearch true
+set-option global aligntab true
+set-option global ui_options ncurses_assistant=dilbert
+set-option -add global ui_options ncurses_change_colors=true
+set-option global grepcmd 'rg --column'
 
-map global insert <tab> '  '
+wiki_setup "/home/nk/Wiki"
 
 # with inspiration from
 # https://github.com/Delapouite/dotfiles/blob/master/link/kak/kakrc
@@ -16,18 +16,16 @@ set global modelinefmt %{
 · {{context_info}} {{mode_info}}
 }
 
-addhl -group / group trailing_white_spaces
-addhl -group /trailing_white_spaces regex \h+$ 0:Error
-
 hook global InsertBegin .* %{
-  rmhl trailing_white_spaces
-  # echo -color Information '— INSERT —'
+  echo '— INSERT —'
 }
 
 hook global InsertEnd .* %{
-  addhl ref trailing_white_spaces
   lint
 }
+
+# spaces instead tabs
+map global insert <tab> '  '
 
 # ← system clipboard
 map global user y '<a-|>xsel --input --clipboard<ret>; :echo -color Information "copied selection to X11 clipboard"<ret>' -docstring 'yank from clipboard'
@@ -41,3 +39,7 @@ hook global NormalKey y|d|c %{ nop %sh{
 
 def -docstring 'ripgrep in current dir' \
 find -params 1 -shell-candidates %{ rg --files } %{ edit %arg{1} }
+
+# editorconfig support
+hook global BufCreate .* %{editorconfig-load}
+

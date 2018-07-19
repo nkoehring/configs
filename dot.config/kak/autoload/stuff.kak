@@ -1,15 +1,18 @@
-face Whitespace rgb:555555+b
-
 # hooks to show line numbers, whitespaces and matching brackets
 hook -group DefaultHighlights global WinCreate .* %{
-  addhl number_lines -hlcursor -separator '  '
-  addhl show_whitespaces
-  addhl show_matching
-  addhl regex '\h+$' 0:default,red    # show all trailing whispaces red
-  addhl dynregex '%reg{/}' 0:+u 1:+b
+    add-highlighter window/ show_whitespaces
+    add-highlighter window/ show_matching
+    add-highlighter window/ regex '\h+$' 0:default,red    # show all trailing whispaces red
+    add-highlighter window/ dynregex '%reg{/}' 0:+u 1:+b
+    set-face window Whitespace rgb:555555+b
 }
-hook -group MarkdownHighlights global WinCreate .*[.](md) %{
-  addhl wrap -word -width 80
+
+hook -group markdown-highlight global WinSetOption filetype=markdown %{
+    add-highlighter window/ wrap -word -width 80
+    add-highlighter window/ number_lines -hlcursor -separator '		'
+}
+hook global WinSetOption filetype=(?!markdown).* %{
+    add-highlighter window/ number_lines -hlcursor -separator '  '
 }
 
 # map tmux split and window commands in vim style

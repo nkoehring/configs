@@ -1,7 +1,0 @@
-set toolbars=none
-set hintchars=hjklasdfgyuiopqwertnmzxcvb
-set visualbell=true
-set complete=lStf
-set defsearch=duckduckgo
-set suggestengines=duckduckgo,wikipedia
-colorscheme zenburn

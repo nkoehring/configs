@@ -1,0 +1,1 @@
+/home/nk/src/pkg/kakoune-buffers/buffers.kak
