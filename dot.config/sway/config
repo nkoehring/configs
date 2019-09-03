@@ -34,18 +34,12 @@ set $ws8  "8: 8 "
 set $ws9  "9: 9 "
 set $ws10 "10: 10 "
 
+output "*" bg ~/Media/wallpaper.jpg fit
+
 output eDP-1 {
-  background ~/Media/wallpaper.jpg fit
   resolution 3200x1800
   pos 0 0
   scale 2
-}
-
-output 'Philips Consumer Electronics Company PHL BDM3270 AU11749004259' {
-  background ~/Media/wallpaper.jpg fit
-  resolution 2560x1440
-  pos 0 -900
-  scale 1.6
 }
 
 input type:keyboard {

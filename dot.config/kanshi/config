@@ -1,0 +1,7 @@
+{
+  output eDP-1 enable mode 3200x1800 position 0,0 scale 2
+}
+{
+  output eDP-1 enable mode 3200x1800 position 0,0 scale 2
+  output "Philips Consumer Electronics Company PHL BDM3270 AU11749004259" mode 2560x1440 position 0,-900 scale 1.6
+}
