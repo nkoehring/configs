@@ -1,18 +1,39 @@
 {
     "layer": "top",    // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 24,      // Waybar height (to be removed for auto height)
+    "height": 22,      // Waybar height (to be removed for auto height)
     // "width": 1280,  // Waybar width
 
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
-    "modules-center": [],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "clock", "tray"],
+    "modules-center": [
+      "custom/left-arrow", "clock#1", "custom/left-arrow-inverse",
+      "custom/left-arrow", "clock#2", "custom/right-arrow",
+      "custom/right-arrow-inverse", "clock#3", "custom/right-arrow"
+    ],
+    "modules-right": ["idle_inhibitor", "network", "temperature", "backlight", "battery", "tray"],
+
+    "custom/left-arrow": {
+      "format": "",
+      "tooltip": false
+    },
+    "custom/left-arrow-inverse": {
+      "format": "",
+      "tooltip": false
+    },
+    "custom/right-arrow": {
+      "format": "",
+      "tooltip": false
+    },
+    "custom/right-arrow-inverse": {
+      "format": "",
+      "tooltip": false
+    },
 
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-        "format": "{icon}"
+        "format": "{name}"
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -28,9 +49,17 @@
         "icon-size": 24,
         "spacing": 10
     },
-    "clock": {
-        "format": "{:%a %b %d %H:%M}",
-        "tooltip-format": "{:%Y-%m-%d, it is %A, %H:%M}"
+    "clock#1": {
+      "format": "{:%a}",
+      "tooltip-format": "{:%Y-%m-%d, it is %A, %H:%M}"
+    },
+    "clock#2": {
+      "format": "{:%H:%M}",
+      "tooltip-format": "{:%Y-%m-%d, it is %A, %H:%M}"
+    },
+    "clock#3": {
+      "format": "{:%b %d}",
+      "tooltip-format": "{:%Y-%m-%d, it is %A, %H:%M}"
     },
     "cpu": {
         "format": "{usage}% ",
@@ -53,8 +82,11 @@
         "format-icons": ["", ""]
     },
     "battery": {
+        "format": "{icon}",
+        "format-icons": ["", "", "", "", ""],
         "states": {
-            // "good": 95,
+            "good": 75,
+            "medium": 50,
             "warning": 30,
             "critical": 15
         },
