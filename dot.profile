@@ -1,13 +1,23 @@
 source /etc/profile
 
+export QT_QPA_PLATFORM=wayland-egl
+export GDK_BACKEND=wayland
+export SDL_VIDEODRIVER=wayland
+export MOZ_ENABLE_WAYLAND=1
+export XDG_CURRENT_DESKTOP=Unity
+
+export XMODIFIERS=@im=ibus
 export EDITOR=kak
 export GOPATH=$HOME/src/go
 export ELMPATH=$HOME/src/pkg/Elm-Platform/0.18/.cabal-sandbox/bin
-export PATH=$HOME/.local/bin:$GOPATH/bin:$ELMPATH:$PATH
+export CARGO_HOME=$HOME/.cargo
+export PATH=$HOME/.local/bin:$HOME/.local/share/npm-global/bin:$GOPATH/bin:$ELMPATH:$CARGO_HOME/bin:$PATH
 export MANPATH=$HOME/.local/share/man:/usr/share/man:/usr/local/share/man
 
 export FREETYPE_PROPERTIES="truetype:interpreter-version=35 cff:darkening-parameters=500,300,1000,200,1500,100,2000,0 autofitter:warping=1"
 export INFINALITY_FT_FILTER_PARAMS='10 35 40 35 10'
+
+export BW_SESSION="hnxvlRxxB36vV36qlxXruO9YaYKAx8JcibtPnbZ2EC8j7o9GmmQ/czz55tGClXlEd5lqANXJCQlJrvKr6EY1Zg=="
 
 alias xi="sudo xbps-install"
 alias xq="xbps-query -Rs"
@@ -17,8 +27,25 @@ alias xqf="xbps-query -f"
 alias xqo="xbps-query -o"
 alias xqre="xbps-query -R --regex -s"
 alias howto="howdoi -c"
+alias icat="kitty +kitten icat"
+alias wttr="wego"
 
-if [ `tty` = /dev/tty1 -a $USER != root -a ! -e /tmp/.X0-lock ]
+short_url () {
+  curl -F "shorten=$1" https://0x0.st
+}
+
+share_file () {
+  curl -F "file=@$1" https://0x0.st
+}
+
+if [ "$TTY" = /dev/tty1 -a $USER != root -a ! -e /tmp/.X0-lock ]
 then
-  startx && exit
+  .local/bin/sway
 fi
+
+if [[ "$TTY" == "/dev/tty"* ]]
+then
+  setfont /home/nk/.local/share/fonts/spleen-16x32.psfu
+fi
+
+export PATH="$HOME/.cargo/bin:$PATH"

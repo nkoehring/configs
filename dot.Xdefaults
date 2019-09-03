@@ -13,8 +13,8 @@ Xft.hinting:   1
 Xft.rgba:      rgb
 Xft.dpi:       96
 
-*font:                xft:monofur for powerline-12
-*faceName:            xft:monofur for powerline-12
+*font:                xft:MonofurNerdFontMono-Book-14
+*faceName:            xft:MonofurNerdFontMono-Book-12
 
 ! colours
 ! --- generated with 4bit Terminal Color Scheme Designer -----------------------

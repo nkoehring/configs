@@ -1,0 +1,13 @@
+color=000000
+image=~/Media/key_and_lock.png
+ignore-empty-password
+hide-keyboard-layout
+indicator-caps-lock
+tiling
+indicator-radius=300
+indicator-thickness=3
+inside-color=00000000
+key-hl-color=FFFFFF88
+bs-hl-color=000000AA
+line-color=000000
+ring-color=88888888

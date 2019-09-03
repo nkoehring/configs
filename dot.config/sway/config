@@ -1,0 +1,226 @@
+# sway / i3 configuration file
+# v1 (2019) by koehr
+
+set $mod Mod4
+set $term kitty
+set $editor kak
+
+set $black       #000000
+set $darkgray    #212121
+set $red         #fb4934
+set $darkred     #cc241d
+set $green       #b8bb26
+set $darkgreen   #98971a
+set $yellow      #fabd2f
+set $darkyellow  #d79921
+set $blue        #83a598
+set $darkblue    #458588
+set $magenta     #d3869b
+set $darkmagenta #b16286
+set $cyan        #8ec07c
+set $darkcyan    #689d6a
+set $white       #ebdbb2
+set $darkwhite   #a89984
+set $transparent #00000000
+
+set $ws1  "1:  "
+set $ws2  "2:  "
+set $ws3  "3:  "
+set $ws4  "4: ⚃ "
+set $ws5  "5: ⚄ "
+set $ws6  "6: ⚅ "
+set $ws7  "7: 7 "
+set $ws8  "8: 8 "
+set $ws9  "9: 9 "
+set $ws10 "10: 10 "
+
+output eDP-1 {
+  background ~/Media/wallpaper.jpg fit
+  resolution 3200x1800
+  pos 0 0
+  scale 2
+}
+
+output 'Philips Consumer Electronics Company PHL BDM3270 AU11749004259' {
+  background ~/Media/wallpaper.jpg fit
+  resolution 2560x1440
+  pos 0 -900
+  scale 1.6
+}
+
+input type:keyboard {
+  xkb_layout us
+  xkb_variant alt-intl-unicode
+  xkb_options grp:alt_shift_toggle
+}
+input type:touchpad {
+  tap enabled
+  tap_button_map lrm
+  drag enabled
+  click_method clickfinger
+  scroll_method two_finger
+  natural_scroll disabled
+  dwt disabled
+}
+
+gaps inner 2
+gaps outer 0
+
+workspace_auto_back_and_forth yes
+font Monofur Nerd Font 14
+
+#                       BORDER      BACKGROUND  TEXT   INDICATOR   CHILD_BORDER
+client.focused          $yellow     $yellow     $black $yellow     $yellow
+client.unfocused        $black      $black      $white $black      $darkyellow
+client.focused_inactive $black      $black      $white $black      $darkyellow
+client.urgent           $darkred    $darkred    $black $darkred    $darkred
+client.background       $black
+
+# window management
+floating_modifier $mod
+bindsym $mod+Return exec $term
+bindsym $mod+q kill
+bindsym $mod+p exec --no-startup-id rofi -modi "run,calc" -show run
+
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+
+bindsym $mod+Shift+Left move left 35px
+bindsym $mod+Shift+Down move down 35px
+bindsym $mod+Shift+Up move up 35px
+bindsym $mod+Shift+Right move right 35px
+
+bindsym $mod+Shift+minus split h
+bindsym $mod+Shift+backslash split v
+bindsym $mod+Shift+equal split toggle
+
+bindsym $mod+w layout tabbed
+bindsym $mod+Shift+w layout stacking
+bindsym $mod+equal layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+s sticky toggle
+
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
+
+# switch workspaces
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+bindsym $mod+Tab workspace back_and_forth
+
+# move workspaces between monitors
+bindsym $mod+Prior move workspace to up  # Prior is also called PageUp
+bindsym $mod+Next move workspace to down # Next is also called PageDown
+bindsym $mod+Home move workspace to left
+bindsym $mod+End move workspace to right
+
+# move containers between workspaces
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# scratchpad
+bindsym $mod+Shift+backspace move scratchpad
+bindsym $mod+backspace scratchpad show
+# make fullscreen window sticky and floating on the top right corner of the screen
+bindsym $mod+y fullscreen disable; floating enable; resize set 400 300; sticky enable; move window to position 1180 20
+
+# reload config / restart
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# MULTIMEDIA CONTROL KEYS
+bindsym XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -5
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume +5
+bindsym XF86AudioMute exec --no-startup-id pulsemixer --toggle-mute
+
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo light -U 10
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo light -A 10
+
+# SCREENSHOTS
+
+bindsym --release Print exec --no-startup-id "maim -t jpeg $HOME/Media/screenshots/scrot-$(date +%Y-%m-%d_%H-%M-%S).jpg"
+bindsym --release Shift+Print exec --no-startup-id "maim -t jpeg -g \"$(slurp)\" $HOME/Media/screenshots/scrot-$(date +%Y-%m-%d_%H-%M-%S).jpg"
+
+# fancy mode stuff
+set $mode_power <span>        </span><span background='#fabd2f' foreground='#000000'> power </span> <span foreground='#ebdbb2'>l</span>ock <span foreground='#ebdbb2'>e</span>xit <span foreground='#ebdbb2'>s</span>uspend <span foreground='#ebdbb2'>r</span>eboot <span foreground='#ebdbb2'>p</span>oweroff
+mode --pango_markup "$mode_power" {
+    bindsym l mode "default", exec --no-startup-id swaylock
+    bindsym e mode "default", exec --no-startup-id swaymsg exit
+    bindsym s mode "default", exec --no-startup-id zzz
+    bindsym h mode "default", exec --no-startup-id ZZZ
+    bindsym r mode "default", exec --no-startup-id shutdown -r now
+    bindsym p mode "default", exec --no-startup-id shutdown -P now
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+l exec swaylock -i Media/key_and_lock.png -klt
+bindsym $mod+Control+l mode "$mode_power"
+
+default_border none
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
+for_window [class="(?i)blueman"] floating enable
+for_window [class="(?i)gsimplecal"] floating enable, move position mouse
+
+assign [class="(?i)firefox"] $ws2
+assign [class="(?i)chrome"]  $ws3
+
+bar {
+  swaybar_command waybar
+}
+
+# bar {
+#   status_command i3blocks
+#   position top
+#   height 24
+#   font monofur 16
+#   strip_workspace_numbers yes
+#   separator_symbol "■"
+#   bindsym button4 nop
+#   bindsym button5 nop
+#   tray_output eDP-1
+#   tray_padding 0
+#   colors {
+#       statusline         $white
+#       background         $transparent
+#       separator          $yellow
+# #                          BORDER       BACKGROUND   TEXT
+#       focused_workspace  $transparent $transparent $yellow
+#       inactive_workspace $transparent $transparent $white
+#       active_workspace   $transparent $transparent $white
+#       urgent_workspace   $darkred     $darkred     $transparent
+#       binding_mode       $transparent $transparent $yellow
+#   }
+# }
+
+# AUTOSTART
+
+# exec --no-startup-id compton -b
+exec --no-startup-id dunst

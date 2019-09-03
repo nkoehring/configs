@@ -1,1 +1,0 @@
-/home/nk/src/pkg/vim-plug/plug.vim

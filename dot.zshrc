@@ -25,4 +25,4 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 ZSH_HIGHLIGHT_PATTERNS+=('rm -fr*' 'fg=white,bold,bg=red')
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf*' 'fg=white,bold,bg=red')
 
-PROJECT_PATHS=(~/src ~/src/*)
+PROJECT_PATHS=(~/src/wunderdog ~/src/koehr ~/src/pkg/)
