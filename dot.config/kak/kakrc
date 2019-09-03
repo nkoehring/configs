@@ -16,10 +16,6 @@ set global modelinefmt %{
 · {{context_info}} {{mode_info}}
 }
 
-hook global InsertBegin .* %{
-  echo '— INSERT —'
-}
-
 hook global InsertEnd .* %{
   lint
 }
@@ -37,9 +33,5 @@ hook global NormalKey y|d|c %{ nop %sh{
   printf %s "$kak_reg_dquote" | xsel --input --clipboard
 }}
 
-def -docstring 'ripgrep in current dir' \
-find -params 1 -shell-candidates %{ rg --files } %{ edit %arg{1} }
-
 # editorconfig support
 hook global BufCreate .* %{editorconfig-load}
-
