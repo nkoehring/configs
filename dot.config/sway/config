@@ -152,8 +152,8 @@ bindsym XF86MonBrightnessUp exec --no-startup-id sudo light -A 10
 
 # SCREENSHOTS
 
-bindsym --release Print exec --no-startup-id "maim -t jpeg $HOME/Media/screenshots/scrot-$(date +%Y-%m-%d_%H-%M-%S).jpg"
-bindsym --release Shift+Print exec --no-startup-id "maim -t jpeg -g \"$(slurp)\" $HOME/Media/screenshots/scrot-$(date +%Y-%m-%d_%H-%M-%S).jpg"
+bindsym --release Print exec --no-startup-id "grim -t jpeg $HOME/Media/Screenshots/scrot-$(date +%Y%m%d%H%M%S).jpg"
+bindsym --release Shift+Print exec --no-startup-id "grim -t jpeg -g \"$(slurp)\" $HOME/Media/Screenshots/scrot-$(date +%Y%m%d%H%M%S).jpg"
 
 # fancy mode stuff
 set $mode_power <span>        </span><span background='#fabd2f' foreground='#000000'> power </span> <span foreground='#ebdbb2'>l</span>ock <span foreground='#ebdbb2'>e</span>xit <span foreground='#ebdbb2'>s</span>uspend <span foreground='#ebdbb2'>r</span>eboot <span foreground='#ebdbb2'>p</span>oweroff
@@ -168,7 +168,7 @@ mode --pango_markup "$mode_power" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+l exec swaylock -i Media/key_and_lock.png -klt
+bindsym $mod+l exec swaylock
 bindsym $mod+Control+l mode "$mode_power"
 
 default_border none
@@ -187,34 +187,10 @@ assign [class="(?i)firefox"] $ws2
 assign [class="(?i)chrome"]  $ws3
 
 bar {
+  tray_output eDP-1
   swaybar_command waybar
 }
 
-# bar {
-#   status_command i3blocks
-#   position top
-#   height 24
-#   font monofur 16
-#   strip_workspace_numbers yes
-#   separator_symbol "■"
-#   bindsym button4 nop
-#   bindsym button5 nop
-#   tray_output eDP-1
-#   tray_padding 0
-#   colors {
-#       statusline         $white
-#       background         $transparent
-#       separator          $yellow
-# #                          BORDER       BACKGROUND   TEXT
-#       focused_workspace  $transparent $transparent $yellow
-#       inactive_workspace $transparent $transparent $white
-#       active_workspace   $transparent $transparent $white
-#       urgent_workspace   $darkred     $darkred     $transparent
-#       binding_mode       $transparent $transparent $yellow
-#   }
-# }
-
 # AUTOSTART
-
 exec --no-startup-id blueman-applet &
 exec --no-startup-id dunst
