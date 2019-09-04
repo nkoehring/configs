@@ -1,6 +1,7 @@
 bindkey -v
 source ~/.profile
 source ~/src/pkg/zgen/zgen.zsh
+source ~/.zsh/kitty.compl.zsh
 
 if ! zgen saved; then
   echo "running zgen"
