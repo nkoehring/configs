@@ -74,7 +74,7 @@ client.background       $black
 floating_modifier $mod
 bindsym $mod+Return exec $term
 bindsym $mod+q kill
-bindsym $mod+p exec --no-startup-id rofi -modi "run,calc" -show run
+bindsym $mod+p exec --no-startup-id rofi -show run
 
 bindsym $mod+Left focus left
 bindsym $mod+Right focus right
@@ -192,5 +192,9 @@ bar {
 }
 
 # AUTOSTART
-exec --no-startup-id blueman-applet &
-exec --no-startup-id dunst
+exec --no-startup-id blueman-applet &  # bluetooth applet
+# the next line is necessary for mako, see https://github.com/emersion/mako
+exec --no-startup-id dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &
+exec --no-startup-id mako &            # notifications
+# exec --no-startup-id dunst &         # old notifications
+exec --no-startup-id kanshi            # automatic screen config
