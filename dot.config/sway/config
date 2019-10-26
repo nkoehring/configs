@@ -153,7 +153,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id sudo light -A 10
 # SCREENSHOTS
 
 bindsym --release Print exec --no-startup-id "grim -t jpeg $HOME/Media/Screenshots/scrot-$(date +%Y%m%d%H%M%S).jpg"
-bindsym --release Shift+Print exec --no-startup-id "grim -t jpeg -g \"$(slurp)\" $HOME/Media/Screenshots/scrot-$(date +%Y%m%d%H%M%S).jpg"
+bindsym --release Shift+Print exec --no-startup-id "grim -t jpeg -g $(slurp) $HOME/Media/Screenshots/scrot-$(date +%Y%m%d%H%M%S).jpg"
 
 # fancy mode stuff
 set $mode_power <span>        </span><span background='#fabd2f' foreground='#000000'> power </span> <span foreground='#ebdbb2'>l</span>ock <span foreground='#ebdbb2'>e</span>xit <span foreground='#ebdbb2'>s</span>uspend <span foreground='#ebdbb2'>r</span>eboot <span foreground='#ebdbb2'>p</span>oweroff
@@ -197,4 +197,5 @@ exec --no-startup-id blueman-applet &  # bluetooth applet
 exec --no-startup-id dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &
 exec --no-startup-id mako &            # notifications
 # exec --no-startup-id dunst &         # old notifications
-exec --no-startup-id kanshi            # automatic screen config
+exec --no-startup-id kanshi &          # automatic screen config
+exec swayidle -w timeout 150 'swaylock' timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'

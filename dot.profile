@@ -38,14 +38,12 @@ share_file () {
   curl -F "file=@$1" https://0x0.st
 }
 
-if [ "$TTY" = /dev/tty1 -a $USER != root -a ! -e /tmp/.X0-lock ]
-then
-  .local/bin/sway
-fi
-
 if [[ "$TTY" == "/dev/tty"* ]]
 then
   setfont /home/nk/.local/share/fonts/spleen-16x32.psfu
 fi
 
-export PATH="$HOME/.cargo/bin:$PATH"
+if [ "$TTY" = /dev/tty1 -a $USER != root -a ! -e /tmp/.X0-lock ]
+then
+  .local/bin/sway
+fi
