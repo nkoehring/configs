@@ -17,7 +17,7 @@ export MANPATH=$HOME/.local/share/man:/usr/share/man:/usr/local/share/man
 export FREETYPE_PROPERTIES="truetype:interpreter-version=35 cff:darkening-parameters=500,300,1000,200,1500,100,2000,0 autofitter:warping=1"
 export INFINALITY_FT_FILTER_PARAMS='10 35 40 35 10'
 
-export BW_SESSION="hnxvlRxxB36vV36qlxXruO9YaYKAx8JcibtPnbZ2EC8j7o9GmmQ/czz55tGClXlEd5lqANXJCQlJrvKr6EY1Zg=="
+export LD_LIBRARY_PATH=$HOME/.local/lib:$HOME/.local/lib/haxe:/lib
 
 alias xi="sudo xbps-install"
 alias xq="xbps-query -Rs"
