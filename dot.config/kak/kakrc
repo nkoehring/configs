@@ -5,8 +5,92 @@ set-option global aligntab true
 set-option global ui_options ncurses_assistant=dilbert
 set-option -add global ui_options ncurses_change_colors=true
 set-option global grepcmd 'rg --column'
+set-option global tabstop 2
+set-option global indentwidth 2
 
-wiki_setup "/home/nk/Wiki"
+# plug.kak plugin manager
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+
+
+plug "andreyorst/plug.kak" noload
+
+plug "lenormf/kakoune-extra" load %{
+  autodownload.kak
+  fzy.kak
+}
+
+###############################################
+# lsp support (https://github.com/ul/kak-lsp) #
+# ...but it's not working yet                 #
+###############################################
+plug "ul/kak-lsp" do %{
+  cargo build --release --locked
+  cargo install --force --path .
+}
+
+plug "TeddyDD/kakoune-wiki" config %{
+  wiki_setup "/home/nk/Wiki"
+}
+
+###########################################################
+# kakoune-buffers                                         #
+# sets former b (word-back) to q and makes b a global key #
+# for the new buffers command. I don't use macros anyway. #
+###########################################################
+plug 'delapouite/kakoune-buffers' config %{
+  map global normal ^ q
+  map global normal <a-^> Q
+  map global normal q b
+  map global normal Q B
+  map global normal <a-q> <a-b>
+  map global normal <a-Q> <a-B>
+  map global normal b ': enter-buffers-mode<ret>' -docstring 'buffers'
+  map global normal B ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)'
+  hook·global·WinDisplay·.*·info-buffers
+}
+
+plug "ABuffSeagull/kakoune-vue"
+plug "ABuffSeagull/kakoune-wiki"
+
+############################################################
+# replace mode                                             #
+# that is one thing I missed in Kakoune: writing over text #
+############################################################
+plug "alexherbo2/replace.kak" noload config %{
+  ## currently not working well
+  # map global user r -docstring 'Replace' ': replace<ret>'
+}
+
+###########################################################
+# explore files (https://github.com/alexherbo2/explore.kak)
+# use fd instead of find
+###########################################################
+plug "alexherbo2/explore.kak" config %{
+   define-command -hidden -override explore-files-recursive -params 0..1 %{
+     explore-files-display "fd %sh(test $kak_opt_explore_files_show_hidden = true && echo --hidden)" %arg(1)
+   }
+}
+
+# TODO: check out snippets
+# plug "alexherbo2/snippets.kak" config %{
+# }
+
+# TODO: check out tagbar
+# plug "andreyorst/tagbar.kak" config %{
+#  set-option global tagbar_sort false
+#  set-option global tagbar_size 40
+#  set-option global tagbar_display_anon false
+#} config %{
+# if you have wrap highlighter enamled in you configuration
+#  # files it's better to turn it off for tagbar, using this hook:
+#  hook global WinSetOption filetype=tagbar %{
+#    remove-highlighter window/wrap
+#    # you can also disable rendering whitespaces here, line numbers, and
+#    # matching characters
+#  }
+#}
+
+# set-option global fzf_filesearch_cmd "fd '%s'"
 
 # with inspiration from
 # https://github.com/Delapouite/dotfiles/blob/master/link/kak/kakrc
@@ -19,6 +103,9 @@ set global modelinefmt %{
 hook global InsertEnd .* %{
   lint
 }
+
+# defines tabe and vsplit commands
+# def -file-completion -params 1 tabe %{ tmux-terminal-window edit %arg{1} }
 
 # spaces instead tabs
 map global insert <tab> '  '

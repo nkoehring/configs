@@ -3,3 +3,4 @@ system
 .*.swo
 Session.vim
 dot.config/nnn/.history
+dot.config/kak/plugins/
