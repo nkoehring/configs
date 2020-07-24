@@ -127,13 +127,8 @@ URxvt*matcher.button:     3
 !URxvt.keysym.C-minus: command:\033]50;xft:Monospace:size=10:antialias=true\007
 URxvt.keysym.C-minus: perl:mark-yank-urls:activate_mark_mode
 
-rofi.pid:  /run/user/1000/rofi.pid
-rofi.modi: run,calc
-rofi.font: monofur for powerline 16
-rofi.width: 70
-rofi.lines: 5
-rofi.columns: 1
-rofi.opacity: 80
-rofi.location: 2
-rofi.padding: 100
+rofi.pid:  /home/nk/.cache/rofi.pid
+rofi.modi: run,calc,emoji,drun
+rofi.font: Monofur Nerdfont 14
+rofi.theme: Monokai
 rofi.fuzzy: false

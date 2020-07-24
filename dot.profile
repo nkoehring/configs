@@ -1,17 +1,10 @@
 source /etc/profile
 
-export QT_QPA_PLATFORM=wayland-egl
-export GDK_BACKEND=wayland
-export SDL_VIDEODRIVER=wayland
-export MOZ_ENABLE_WAYLAND=1
-export XDG_CURRENT_DESKTOP=Unity
-
 export XMODIFIERS=@im=ibus
 export EDITOR=kak
 export GOPATH=$HOME/src/go
-export ELMPATH=$HOME/src/pkg/Elm-Platform/0.18/.cabal-sandbox/bin
 export CARGO_HOME=$HOME/.cargo
-export PATH=$HOME/.local/bin:$HOME/.local/share/npm-global/bin:$GOPATH/bin:$ELMPATH:$CARGO_HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.local/share/npm-global/bin:$GOPATH/bin:$CARGO_HOME/bin:$PATH
 export MANPATH=$HOME/.local/share/man:/usr/share/man:/usr/local/share/man
 
 export FREETYPE_PROPERTIES="truetype:interpreter-version=35 cff:darkening-parameters=500,300,1000,200,1500,100,2000,0 autofitter:warping=1"
@@ -40,10 +33,10 @@ share_file () {
 
 if [[ "$TTY" == "/dev/tty"* ]]
 then
-  setfont /home/nk/.local/share/fonts/spleen-16x32.psfu
+  setfont drdos8x14
 fi
 
 if [ "$TTY" = /dev/tty1 -a $USER != root -a ! -e /tmp/.X0-lock ]
 then
-  .local/bin/sway
+  startx && clear && exit
 fi
