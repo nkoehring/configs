@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -74,18 +75,22 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_Escape, spawn,          {.v = lockcmd } },
 
-	{ MODKEY,                       XF86XK_Sleep,             spawn, {.v = sleepcmd } },
-	{ MODKEY,                       XF86XK_MonBrightnessUp,   spawn, {.v = backlightInc} },
-	{ MODKEY,                       XF86XK_MonBrightnessDown, spawn, {.v = backlightDec} },
-	{ MODKEY,                       XF86XK_AudioRaiseVolume,  spawn, {.v = volumeInc} },
-	{ MODKEY,                       XF86XK_AudioLowerVolume,  spawn, {.v = volumeDec} },
-	{ MODKEY,                       XF86XK_AudioMute,         spawn, {.v = volumeMute} },
+	{ 0,                            XF86XK_Sleep,             spawn, {.v = sleepcmd } },
+	{ 0,                            XF86XK_MonBrightnessUp,   spawn, {.v = backlightInc} },
+	{ 0,                            XF86XK_MonBrightnessDown, spawn, {.v = backlightDec} },
+	{ 0,                            XF86XK_AudioRaiseVolume,  spawn, {.v = volumeInc} },
+	{ 0,                            XF86XK_AudioLowerVolume,  spawn, {.v = volumeDec} },
+	{ 0,                            XF86XK_AudioMute,         spawn, {.v = volumeMute} },
 
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_Left,   focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_Right,  focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_Down,   setmfact,       {.f = -0.10} },
+	{ MODKEY,                       XK_Up,     setmfact,       {.f = +0.10} },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },

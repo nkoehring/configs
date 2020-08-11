@@ -13,75 +13,75 @@ Xft.hinting:   1
 Xft.rgba:      rgb
 Xft.dpi:       96
 
-*font:                xft:MonofurNerdFontMono-Book-14
-*faceName:            xft:MonofurNerdFontMono-Book-12
+*font:                xft:MonofurNerdFont-14
+*faceName:            xft:MonofurNerdFont-14
 
-! colours
+! --- ~/.Xresources ------------------------------------------------------------
+! ------------------------------------------------------------------------------
 ! --- generated with 4bit Terminal Color Scheme Designer -----------------------
+! ------------------------------------------------------------------------------
 ! --- http://ciembor.github.com/4bit -------------------------------------------
-*background: #424242
+! ------------------------------------------------------------------------------
+
+! --- special colors ---
+
+*background: #271512
 *foreground: #d9e6f2
 
+! --- standard colors ---
+
 ! black
-*color0: #2b2b2b
-*color8: #424242
+*color0: #232323
+
+! bright_black
+*color8: #353535
 
 ! red
-*color1: #ba9897
-*color9: #d0b9b9
+*color1: #af8384
+
+! bright_red
+*color9: #d7c1c1
 
 ! green
-*color2: #97ba98
-*color10: #b9d0b9
+*color2: #84af83
+
+! bright_green
+*color10: #c1d7c1
 
 ! yellow
-*color3: #b9ba97
-*color11: #d0d0b9
+*color3: #afae83
+
+! bright_yellow
+*color11: #d7d7c1
 
 ! blue
-*color4: #9897ba
-*color12: #b9b9d0
+*color4: #8384af
+
+! bright_blue
+*color12: #c1c1d7
 
 ! magenta
-*color5: #ba97b9
-*color13: #d0b9d0
+*color5: #ae83af
+
+! bright_magenta
+*color13: #d7c1d7
 
 ! cyan
-*color6: #97b9ba
-*color14: #b9d0d0
+*color6: #83afae
+
+! bright_cyan
+*color14: #c1d7d7
 
 ! white
-*color7: #d2d2d2
-*color15: #ffffff
+*color7: #c6c6c6
 
-!! old colors:
-!*foreground:          #cccccc
-!*background:          #191919
-!
-!! Black + Dark Grey
-!*color0: #222222
-!*color8: #333333
-!! Dark Red + Red
-!*color1:              #a10a30
-!*color9:              #b30a30
-!! Dark Green + Green
-!*color2:              #5b762f
-!*color10:             #89b83f
-!! Dark Yellow + Yellow
-!*color3:              Khaki3
-!*color11:             #efe58b
-!! Dark Blue + Blue
-!*color4:              #324c80
-!*color12:             #2b4f98
-!! Dark Magenta + Magenta
-!*color5:              #706c9a
-!*color13:             #826ab1
-!! Dark Cyan + Cyan
-!*color6:              #92b19e
-!*color14:             #a1cdcd
-!! Light Grey + White
-!*color7:              #ffffff
-!*color15:             #dedede
+! bright_white
+*color15: #e4e4e4
+
+
+! ------------------------------------------------------------------------------
+! --- end of terminal colors section -------------------------------------------
+! ------------------------------------------------------------------------------
 
 ! xmessage settings:
 .xmessage.form.okay.shapeStyle:       round

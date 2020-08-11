@@ -1,6 +1,7 @@
 xset -b
 xrdb -merge .Xdefaults
 xsetroot -solid black -cursor_name left_ptr
+setxkbmap -layout us -variant alt-intl-unicode
 
 synclient TapButton1=1
 synclient TapButton2=2
