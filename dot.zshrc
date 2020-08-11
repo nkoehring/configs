@@ -11,6 +11,7 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/pj
   zgen oh-my-zsh plugins/encode64
   zgen oh-my-zsh plugins/urltools
+  zgen oh-my-zsh plugins/nvm
 
   zgen load zsh-users/zsh-syntax-highlighting
   zgen load zsh-users/zaw
@@ -33,3 +34,8 @@ if [ -f '/home/nk/src/pkg/google-cloud-sdk/path.zsh.inc' ]; then . '/home/nk/src
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/nk/src/pkg/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/nk/src/pkg/google-cloud-sdk/completion.zsh.inc'; fi
+
+alias ls="lsd"
+alias l="lsd -lha"
+alias ll="lsd -lh"
+alias lt="lsd --tree"
