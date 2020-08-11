@@ -1,12 +1,12 @@
 source /etc/profile
 
-export XMODIFIERS=@im=ibus
 export EDITOR=kak
 export GOPATH=$HOME/src/go
 export CARGO_HOME=$HOME/.cargo
 export PATH=$HOME/.local/bin:$HOME/.local/share/npm-global/bin:$GOPATH/bin:$CARGO_HOME/bin:$PATH
 export MANPATH=$HOME/.local/share/man:/usr/share/man:/usr/local/share/man
 
+export _JAVA_AWT_WM_NONREPARENTING=1
 export FREETYPE_PROPERTIES="truetype:interpreter-version=35 cff:darkening-parameters=500,300,1000,200,1500,100,2000,0 autofitter:warping=1"
 export INFINALITY_FT_FILTER_PARAMS='10 35 40 35 10'
 
@@ -21,7 +21,7 @@ alias xqo="xbps-query -o"
 alias xqre="xbps-query -R --regex -s"
 alias howto="howdoi -c"
 alias icat="kitty +kitten icat"
-alias wttr="wego"
+alias wttr="curl wttr.in"
 
 short_url () {
   curl -F "shorten=$1" https://0x0.st
