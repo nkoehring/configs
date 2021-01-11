@@ -1,5 +1,5 @@
 # dwm version
-VERSION = 6.2-nk3
+VERSION = 6.2-nk5-patched
 
 # Customize below to fit your system
 
