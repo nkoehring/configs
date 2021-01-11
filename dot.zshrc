@@ -1,5 +1,4 @@
 bindkey -v
-source ~/.profile
 source ~/src/pkg/zgen/zgen.zsh
 source ~/.zsh/kitty.compl.zsh
 
@@ -35,7 +34,4 @@ if [ -f '/home/nk/src/pkg/google-cloud-sdk/path.zsh.inc' ]; then . '/home/nk/src
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/nk/src/pkg/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/nk/src/pkg/google-cloud-sdk/completion.zsh.inc'; fi
 
-alias ls="lsd"
-alias l="lsd -lha"
-alias ll="lsd -lh"
-alias lt="lsd --tree"
+source ~/.profile

@@ -3,7 +3,7 @@ source /etc/profile
 export EDITOR=kak
 export GOPATH=$HOME/src/go
 export CARGO_HOME=$HOME/.cargo
-export PATH=$HOME/.local/bin:$HOME/.local/share/npm-global/bin:$GOPATH/bin:$CARGO_HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.yarn/bin:$HOME/.local/share/npm-global/bin:$GOPATH/bin:$CARGO_HOME/bin:$HOME/.gem/ruby/2.7.0/bin:$PATH
 export MANPATH=$HOME/.local/share/man:/usr/share/man:/usr/local/share/man
 
 export _JAVA_AWT_WM_NONREPARENTING=1
@@ -22,6 +22,19 @@ alias xqre="xbps-query -R --regex -s"
 alias howto="howdoi -c"
 alias icat="kitty +kitten icat"
 alias wttr="curl wttr.in"
+alias df="duf"
+alias md="glow -p"
+alias ls="lsd"
+alias l="lsd -lha"
+alias ll="lsd -lh"
+alias lt="lsd --tree"
+
+# twtxt
+alias ttt="txtnish tweet"
+alias ttl="txtnish timeline"
+alias ttf="txtnish follow"
+alias ttu="txtnish unfollow"
+alias ttr="txtnish reply"
 
 short_url () {
   curl -F "shorten=$1" https://0x0.st
