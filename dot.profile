@@ -23,11 +23,13 @@ alias howto="howdoi -c"
 alias icat="kitty +kitten icat"
 alias wttr="curl wttr.in"
 alias df="duf"
+alias du="dust"
 alias md="glow -p"
 alias ls="lsd"
 alias l="lsd -lha"
 alias ll="lsd -lh"
 alias lt="lsd --tree"
+alias pp="bat"
 
 # twtxt
 alias ttt="txtnish tweet"

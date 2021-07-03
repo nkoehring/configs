@@ -27,6 +27,6 @@ hook global WinSetOption filetype=rust %{
   set buffer indentwidth 4
 }
 hook global WinSetOption filetype=json %{
-  set window formatcmd 'jq .'
+  set window formatcmd 'jq --indent 2 .'
   hook window BufWritePre .* format
 }
