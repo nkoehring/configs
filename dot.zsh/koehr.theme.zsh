@@ -72,16 +72,12 @@ ZSH_THEME_GIT_PROMPT_CLEAN="$CC_WRITE_IN_GREEN✓"
 CC_CURRENT_PATH="%1~"
 CC_HOSTNAME=`hostname`
 
-if [ "$CC_HOSTNAME" = 'koehr' ]; then
+if [ "$CC_HOSTNAME" = 'koehr-main' ]; then
   CC_HOSTNAME=$CC_SYMBOL_SERVER
 fi
 
-if [ "$CC_HOSTNAME" = 'HERENK' ]; then
-  CC_HOSTNAME=$CC_SYMBOL_WORK
-fi
-
-if [ "$CC_HOSTNAME" = 'liz' ]; then
-  CC_HOSTNAME=""
+if [ "$CC_HOSTNAME" = 'nkwd' ]; then
+  CC_HOSTNAME=$CC_SYMBOL_HOME
 fi
 
 RPROMPT='$(git_prompt_info)'"$CC_CRPROMPT $(_collapsed_path)%{$reset_color%}"
