@@ -58,10 +58,6 @@ plug "ul/kak-lsp" do %{
 #  lsp-enable-window
 #}
 
-plug "TeddyDD/kakoune-wiki" config %{
-  wiki_setup "/home/nk/Wiki"
-}
-
 ###########################################################
 # kakoune-buffers                                         #
 # sets former b (word-back) to q and makes b a global key #
