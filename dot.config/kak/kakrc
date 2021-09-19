@@ -16,7 +16,9 @@ plug "andreyorst/plug.kak" noload
 
 plug "lenormf/kakoune-extra" load %{
   autodownload.kak
-  fzy.kak
+}
+plug "andreyorst/fzf.kak" config %{
+  map global normal <c-p> ': fzf-mode<ret>'
 }
 
 ###############################################
@@ -126,7 +128,7 @@ set global modelinefmt %{
 · {{context_info}} {{mode_info}}
 }
 
-hook global InsertEnd .* %{
+hook global BufWritePre .* %{
   lint
 }
 
