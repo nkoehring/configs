@@ -65,6 +65,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 // static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_highlight, "-sf", col_gray4, NULL };
 static const char *dmenucmd[] = { "rofi", "-show", "run", NULL };
 static const char *calccmd[] = { "rofi", "-show", "calc", "-modi", "calc", "-no-show-match", "-no-sort", NULL };
+static const char *pwdcmd[]  = { "bwmenu", NULL };
 static const char *termcmd[]  = { "st", "-f", dmenufont, "-e", "tmux", "new-session", "-A", NULL };
 static const char *lockcmd[]  = { "slock", NULL };
 static const char *sleepcmd[]  = { "sudo", "zzz", NULL };
@@ -77,6 +78,7 @@ static const char *volumeMute[]  = { "pactl", "set-sink-mute", "@DEFAULT_SINK@",
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = pwdcmd } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = calccmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_Escape, spawn,          {.v = lockcmd } },
