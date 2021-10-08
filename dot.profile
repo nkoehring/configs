@@ -30,6 +30,7 @@ alias l="lsd -lha"
 alias ll="lsd -lh"
 alias lt="lsd --tree"
 alias pp="bat"
+alias feh="feh --auto-rotate --draw-actions --draw-exif --draw-filename --draw-tinted"
 
 # twtxt
 alias ttt="txtnish tweet"
