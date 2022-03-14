@@ -14,4 +14,10 @@ mkdir -p ~/src/pkg
 git clone https://github.com/tarjoilija/zgen.git ~/src/pkg/zgen
 ```
 
-I use wayland and sway. You can check out [this reddit post](https://www.reddit.com/r/unixporn/comments/d0fuc1/sway_mario_plays_the_blues/)
+Wayland
+-------
+
+For a while I used wayland and sway. You can check out [this reddit post](https://www.reddit.com/r/unixporn/comments/d0fuc1/sway_mario_plays_the_blues/) for some pretty imagery. My current setup is back to X11 because I needed some things that don't work on a pure wayland setup yet.
+
+If you want to check out the wayland config (which is most probably very outdated after so many years), you can find [the wayland branch on github](https://github.com/nkoehring/configs/tree/wayland).
+
