@@ -39,6 +39,8 @@ alias ttf="txtnish follow"
 alias ttu="txtnish unfollow"
 alias ttr="txtnish reply"
 
+alias rip="curl -G -H 'Accept: text/plain' --url https://dontbeevil.rip/search --data-urlencode "
+
 short_url () {
   curl -F "shorten=$1" https://0x0.st
 }

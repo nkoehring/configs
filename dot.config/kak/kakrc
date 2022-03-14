@@ -26,34 +26,31 @@ plug "andreyorst/fzf.kak" config %{
 # ...but it's not working yet                 #
 ###############################################
 
-plug "ul/kak-lsp" do %{
-  cargo build --release --locked
-  cargo install --force --path .
-} config %{
-  # eval %sh{kak-lsp --kakoune -s $kak_session}
-  set-option global lsp_completion_trigger "execute-keys 'h<a-h><a-k>\S[^\h\n,=;*(){}\[\]]\z<ret>'"
-  set-option global lsp_diagnostic_line_error_sign '║'
-  set-option global lsp_diagnostic_line_warning_sign '┊'
+eval %sh{kak-lsp --kakoune -s $kak_session}
+set-option global lsp_completion_trigger "execute-keys 'h<a-h><a-k>\S[^\h\n,=;*(){}\[\]]\z<ret>'"
+set-option global lsp_diagnostic_line_error_sign '║'
+set-option global lsp_diagnostic_line_warning_sign '┊'
 
-  define-command ne -docstring 'go to next error/warning from lsp' %{ lsp-find-error --include-warnings }
-  define-command pe -docstring 'go to previous error/warning from lsp' %{ lsp-find-error --previous --include-warnings }
-  define-command ee -docstring 'go to current error/warning from lsp' %{ lsp-find-error --include-warnings; lsp-find-error --previous --include-warnings }
+define-command ne -docstring 'go to next error/warning from lsp' %{ lsp-find-error --include-warnings }
+define-command pe -docstring 'go to previous error/warning from lsp' %{ lsp-find-error --previous --include-warnings }
+define-command ee -docstring 'go to current error/warning from lsp' %{ lsp-find-error --include-warnings; lsp-find-error --previous --include-warnings }
 
-  hook global WinSetOption filetype=(c|cpp|rust|go|javascript|typescript) %{
-    map window user "l" ": enter-user-mode lsp<ret>" -docstring "LSP mode"
-    set-option window lsp_auto_highlight_references true
-    set-option window lsp_hover_anchor true
-    set-face window DiagnosticError default+u
-    set-face window DiagnosticWarning default+u
-    lsp-enable-window
-    lsp-auto-hover-enable
-    lsp-auto-hover-insert-mode-disable
-  }
-  hook global WinSetOption filetype=rust %{
-    set-option window lsp_server_configuration rust.clippy_preference="on"
-  }
-  hook global KakEnd .* lsp-exit
+hook global WinSetOption filetype=(c|cpp|rust|go|javascript|typescript) %{
+  # map window user "l" ": enter-user-mode lsp<ret>" -docstring "LSP mode"
+  map window user l %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
+  set-option window lsp_auto_highlight_references true
+  set-option window lsp_hover_anchor true
+  set-face window DiagnosticError default+u
+  set-face window DiagnosticWarning default+u
+  lsp-enable-window
+  lsp-auto-hover-enable
+  lsp-auto-hover-insert-mode-disable
 }
+hook global WinSetOption filetype=rust %{
+  set-option window lsp_server_configuration rust.clippy_preference="on"
+}
+hook global KakEnd .* lsp-exit
+
 
 #eval %sh{kak-lsp --kakoune -s $kak_session}
 #hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{

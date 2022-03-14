@@ -35,3 +35,5 @@ if [ -f '/home/nk/src/pkg/google-cloud-sdk/path.zsh.inc' ]; then . '/home/nk/src
 if [ -f '/home/nk/src/pkg/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/nk/src/pkg/google-cloud-sdk/completion.zsh.inc'; fi
 
 source ~/.profile
+
+export PATH="/home/nk/.local/opt/deta/bin:$PATH"
