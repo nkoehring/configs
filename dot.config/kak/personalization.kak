@@ -1,4 +1,4 @@
-colorscheme warm-pastel
+colorscheme penumbra
 set-option global scrolloff 5,5
 set-option global incsearch true
 set-option global aligntab true
@@ -25,12 +25,16 @@ set global modelinefmt %{
 · {{context_info}} {{mode_info}}
 }
 
-#hook global InsertEnd .* %{
-#  lint
-#}
-
 # spaces instead tabs
-map global insert <tab> '  '
+hook global InsertChar \t %{ try %{
+  execute-keys -draft "h<a-h><a-k>\A\h+\z<ret><a-;>;%opt{indentwidth}@"
+}}
+hook global InsertDelete ' ' %{ try %{
+  execute-keys -draft 'h<a-h><a-k>\A\h+\z<ret>i<space><esc><lt>'
+}}
+
+# Bring back S-x (kind of)
+map global normal X 'Jx'
 
 # editorconfig support
 hook global BufCreate .* %{editorconfig-load}

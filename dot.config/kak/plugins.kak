@@ -39,3 +39,17 @@ plug "andreyorst/kaktree" defer kaktree %{
   }
   kaktree-enable
 }
+
+plug "ABuffSeagull/kakoune-vue"
+
+plug "schemar/kak-jsts" config %{
+  hook global WinSetOption filetype=(javascript|typescript|ecmascript) %{
+    map window user l -docstring 'lint' ': lint<ret>'
+    map window user f -docstring 'format' ': format-prettier<ret>'
+    hook window BufWritePre .* %{
+      evaluate-commands -no-hooks %{
+        format-prettier
+      }
+    }
+  }
+}

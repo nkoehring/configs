@@ -6,10 +6,6 @@ hook global WinSetOption filetype=(?!markdown).* %{
     add-highlighter window/ number-lines -hlcursor -separator '  '
 }
 
-hook global WinSetOption filetype=(javascript|ecmascript) %{
-  set window formatcmd 'prettier-standard'
-  #hook window BufWritePre .* format
-}
 hook global WinSetOption filetype=rust %{
   racer-enable-autocomplete
   set window formatcmd 'rustfmt'
