@@ -1,5 +1,5 @@
 bindkey -v
-source ~/src/pkg/zgen/zgen.zsh
+source ~/pkg/zgen/zgen.zsh
 source ~/.zsh/kitty.compl.zsh
 
 if ! zgen saved; then
@@ -26,7 +26,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 ZSH_HIGHLIGHT_PATTERNS+=('rm -fr*' 'fg=white,bold,bg=red')
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf*' 'fg=white,bold,bg=red')
 
-PROJECT_PATHS=(~/src/wunderdog ~/src/koehr ~/src/pkg/)
+PROJECT_PATHS=(~/src/Spenoki ~/src/koehr ~/src/pkg/)
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/nk/src/pkg/google-cloud-sdk/path.zsh.inc' ]; then . '/home/nk/src/pkg/google-cloud-sdk/path.zsh.inc'; fi
