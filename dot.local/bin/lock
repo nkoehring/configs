@@ -1,0 +1,5 @@
+cd ~/tmp &&
+grim -o eDP-1 scrot.png &&
+mogrify -scale 10% -blur 0x1.5 -resize 600% scrot.png &&
+composite -gravity center ~/Media/marioPlaysTheBlues_overlay.png scrot.png scrot.png &&
+swaylock
