@@ -1,9 +1,10 @@
-# sway / i3 configuration file
-# v1 (2019) by koehr
+# sway configuration file
+# v2 (2023) by koehr
 
 set $mod Mod4
-set $term kitty
-set $editor kak
+set $term foot
+set $editor hx
+set $rofi_cmd rofi -terminal '$term' -show drun
 
 set $black       #000000
 set $darkgray    #212121
@@ -25,7 +26,7 @@ set $transparent #00000000
 
 set $ws1  "1:  "
 set $ws2  "2:  "
-set $ws3  "3:  "
+set $ws3  "3: ⚂ "
 set $ws4  "4: ⚃ "
 set $ws5  "5: ⚄ "
 set $ws6  "6: ⚅ "
@@ -33,15 +34,33 @@ set $ws7  "7: 7 "
 set $ws8  "8: 8 "
 set $ws9  "9: 9 "
 set $ws10 "10: 10 "
-
-output "*" bg ~/Media/wallpaper.jpg fit
+set $ws11 "11: 11 "
+set $ws12 "12: 12 "
+set $ws13 "13: 13 "
+set $ws14 "14: 14 "
+set $ws15 "15: 15 "
+set $ws16 "16: 16 "
+set $ws17 "17: 17 "
+set $ws18 "18: 18 "
+set $ws19 "19: 19 "
+set $ws20 "20: 20 "
 
 output eDP-1 {
-  resolution 3200x1800
-  pos 0 0
-  scale 2
+  res 2880x1800@120Hz
+  pos 0,0
+  scale 1.5
+  render_bit_depth 10
+  adaptive_sync on
+  bg $HOME/Wallpapers/desktop.jpg fill
 }
-
+output DP-1 {
+  res 2880x864@120Hz
+  pos 0,1200
+  scale 1.5
+  render_bit_depth 10
+  adaptive_sync on
+  bg #000000 solid_color
+}
 input type:keyboard {
   xkb_layout us
   xkb_variant alt-intl-unicode
@@ -54,14 +73,20 @@ input type:touchpad {
   click_method clickfinger
   scroll_method two_finger
   natural_scroll disabled
-  dwt disabled
+  dwt enabled
 }
 
 gaps inner 2
 gaps outer 0
+default_border pixel 1
+default_floating_border normal 2
+titlebar_border_thickness 0
+hide_edge_borders --i3 smart
+smart_borders on
+smart_gaps on
 
 workspace_auto_back_and_forth yes
-font Monofur Nerd Font 14
+font monospace 0
 
 #                       BORDER      BACKGROUND  TEXT   INDICATOR   CHILD_BORDER
 client.focused          $yellow     $yellow     $black $yellow     $yellow
@@ -70,11 +95,17 @@ client.focused_inactive $black      $black      $white $black      $darkyellow
 client.urgent           $darkred    $darkred    $black $darkred    $darkred
 client.background       $black
 
+#bar {
+#  font Monofur Nerd Font 14
+#  output eDP-1
+#  position top
+#}
+
 # window management
-floating_modifier $mod
+floating_modifier $mod normal
 bindsym $mod+Return exec $term
 bindsym $mod+q kill
-bindsym $mod+p exec --no-startup-id rofi -show run
+bindsym $mod+p exec --no-startup-id $rofi_cmd
 
 bindsym $mod+Left focus left
 bindsym $mod+Right focus right
@@ -112,6 +143,20 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+
+bindsym $mod+Ctrl+1 workspace $ws11
+bindsym $mod+Ctrl+2 workspace $ws12
+bindsym $mod+Ctrl+3 workspace $ws13
+bindsym $mod+Ctrl+4 workspace $ws14
+bindsym $mod+Ctrl+5 workspace $ws15
+bindsym $mod+Ctrl+6 workspace $ws16
+bindsym $mod+Ctrl+7 workspace $ws17
+bindsym $mod+Ctrl+8 workspace $ws18
+bindsym $mod+Ctrl+9 workspace $ws19
+bindsym $mod+Ctrl+0 workspace $ws20
+
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next
 bindsym $mod+Tab workspace back_and_forth
 
 # move workspaces between monitors
@@ -138,64 +183,28 @@ bindsym $mod+backspace scratchpad show
 # make fullscreen window sticky and floating on the top right corner of the screen
 bindsym $mod+y fullscreen disable; floating enable; resize set 400 300; sticky enable; move window to position 1180 20
 
+bindsym $mod+l exec /home/n/.local/bin/lock
+
 # reload config / restart
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 # MULTIMEDIA CONTROL KEYS
-bindsym XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -5
-bindsym XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume +5
-bindsym XF86AudioMute exec --no-startup-id pulsemixer --toggle-mute
+#bindsym XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -5
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume +5
+#bindsym XF86AudioMute exec --no-startup-id pulsemixer --toggle-mute
 
-bindsym XF86MonBrightnessDown exec --no-startup-id sudo light -U 10
-bindsym XF86MonBrightnessUp exec --no-startup-id sudo light -A 10
+#bindsym XF86MonBrightnessDown exec --no-startup-id sudo light -U 10
+#bindsym XF86MonBrightnessUp exec --no-startup-id sudo light -A 10
 
 # SCREENSHOTS
-
 bindsym --release Print exec --no-startup-id "grim -t jpeg $HOME/Media/Screenshots/scrot-$(date +%Y%m%d%H%M%S).jpg"
 bindsym --release Shift+Print exec --no-startup-id "grim -t jpeg -g $(slurp) $HOME/Media/Screenshots/scrot-$(date +%Y%m%d%H%M%S).jpg"
 
-# fancy mode stuff
-set $mode_power <span>        </span><span background='#fabd2f' foreground='#000000'> power </span> <span foreground='#ebdbb2'>l</span>ock <span foreground='#ebdbb2'>e</span>xit <span foreground='#ebdbb2'>s</span>uspend <span foreground='#ebdbb2'>r</span>eboot <span foreground='#ebdbb2'>p</span>oweroff
-mode --pango_markup "$mode_power" {
-    bindsym l mode "default", exec --no-startup-id swaylock
-    bindsym e mode "default", exec --no-startup-id swaymsg exit
-    bindsym s mode "default", exec --no-startup-id zzz
-    bindsym h mode "default", exec --no-startup-id ZZZ
-    bindsym r mode "default", exec --no-startup-id shutdown -r now
-    bindsym p mode "default", exec --no-startup-id shutdown -P now
+exec swayidle -w \
+  timeout 300 'swaylock -f -c 000000' \
+  timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+  before-sleep 'swaylock -f -c 000000'
 
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+l exec swaylock
-bindsym $mod+Control+l mode "$mode_power"
-
-default_border none
-
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_role="Preferences"] floating enable
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
-
-for_window [class="(?i)blueman"] floating enable
-for_window [class="(?i)gsimplecal"] floating enable, move position mouse
-
-assign [class="(?i)firefox"] $ws2
-assign [class="(?i)chrome"]  $ws3
-
-bar {
-  tray_output eDP-1
-  swaybar_command waybar
-}
-
-# AUTOSTART
-exec --no-startup-id blueman-applet &  # bluetooth applet
-# the next line is necessary for mako, see https://github.com/emersion/mako
-exec --no-startup-id dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &
-exec --no-startup-id mako &            # notifications
-# exec --no-startup-id dunst &         # old notifications
-exec --no-startup-id kanshi &          # automatic screen config
-exec swayidle -w timeout 150 'swaylock' timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'

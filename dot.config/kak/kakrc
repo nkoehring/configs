@@ -1,3 +1,0 @@
-source "%val{config}/personalization.kak"
-source "%val{config}/filetypes.kak"
-source "%val{config}/plugins.kak"

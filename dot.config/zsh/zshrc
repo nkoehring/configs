@@ -1,0 +1,28 @@
+bindkey -v
+source ~/pkg/zgenom/zgenom.zsh
+
+zgenom autoupdate
+
+if ! zgenom saved; then
+  echo "one-time plugin initialization..."
+
+  zgenom ohmyzsh
+  zgenom oh-my-zsh plugins/extract
+
+  zgenom load zsh-users/zsh-syntax-highlighting
+  zgenom load zsh-users/zaw
+  zgenom load zsh-users/zsh-completions src
+
+  # generate the init script from plugins above
+  zgenom save
+  zgenom compile "$HOME/.zshrc"
+fi
+
+source ~/.config/zsh/koehr.theme.zsh
+setopt HIST_IGNORE_DUPS
+
+COMPLETION_WAITING_DOTS="true"
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+ZSH_HIGHLIGHT_PATTERNS+=('rm -fr*' 'fg=white,bold,bg=red')
+
+source ~/.profile

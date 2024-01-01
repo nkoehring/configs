@@ -1,1 +1,0 @@
-/home/nk/src/koehr/kakoune-svelte/svelte.kak
