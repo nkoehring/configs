@@ -7,11 +7,11 @@ public viewport and backup. I appreciate suggestions, rants and bug reports :)
 Requirements & Usage
 --------------------
 
-My zshrc expects the zgenom repository checked out in `~/src/pkg/`:
+My zshrc expects the zgenom repository checked out in `~/pkg/`:
 
 ```sh
-mkdir -p ~/src/pkg
-git clone https://github.com/jandamm/zgenom.git ~/src/pkg/zgenom
+mkdir -p ~/pkg
+git clone https://github.com/jandamm/zgenom.git ~/pkg/zgenom
 ```
 
 Most things can be simply copied over, but I used a special naming scheme where hidden (dot) files start with `dot`, like `.profile` becomes `dot.profile`, to ensure visibility.
