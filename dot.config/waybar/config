@@ -2,10 +2,19 @@
     "output": "eDP-1",
     "layer": "bottom",
     "mode": "dock",
-	"spacing": 16,
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["privacy", "wlr/taskbar"],
+	"spacing": 0,
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/suffix"],
+    "modules-center": ["custom/prefix", "sway/window", "custom/suffix"],
+    "modules-right": ["custom/prefix", "privacy", "wlr/taskbar"],
+
+    "custom/suffix": {
+		"format": "",
+		"tooltip": false
+    },
+    "custom/prefix": {
+		"format": "",
+		"tooltip": false
+    },
 
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -26,13 +35,47 @@
     },
     "sway/window": {
         "icon": false,
-        "format": "{title} ({app_id}) ",
+        "format": "{title} ({app_id})",
     },
     "privacy": {
     	"icon-spacing": 4,
     	"icon-size": 24,
     	"transition-duration": 350,
     },
+    "group/power": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-power",
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "custom/power", // First element is the "group leader" and won't ever be hidden
+            "custom/quit",
+            "custom/lock",
+            "custom/reboot",
+        ]
+    },
+    "custom/quit": {
+        "format": "󰗼",
+        "tooltip": false,
+        "on-click": "swaymsg exit"
+    },
+    "custom/lock": {
+        "format": "󰍁",
+        "tooltip": false,
+        "on-click": "swaylock"
+    },
+    "custom/reboot": {
+        "format": "󰜉",
+        "tooltip": false,
+        "on-click": "reboot"
+    },
+    "custom/power": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "shutdown now"
+    }
 }, {
     "output": "DP-1",
     "layer": "top",

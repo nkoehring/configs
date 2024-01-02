@@ -8,11 +8,11 @@ window#waybar {
   color: #ffffff;
 }
 window#waybar.eDP-1 {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(42, 42, 42, 0.8);
   border: none;
 }
 window#waybar.DP-1 {
-  background-color: rgba(42, 42, 42, 0.7);
+  background-color: rgba(42, 42, 42, 0.8);
   border-bottom: 3px solid rgba(115, 115, 115, 0.5);
   transition-property: background-color;
   transition-duration: .5s;
@@ -33,17 +33,15 @@ button {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
     background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
+    box-shadow: inset 0 -3px white;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
     color: #ffffff;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background: #FABD2F;
 }
 
 #workspaces button.focused {
@@ -53,7 +51,32 @@ button:hover {
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: #EB4D4B;
+}
+
+#workspaces,
+#sway-mode,
+#sway-scratchpad,
+#window,
+#privacy,
+#taskbar,
+#power {
+    background-color: black;
+}
+
+#window {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+#custom-suffix,
+#custom-prefix {
+    background-color: transparent;
+    color: black;
+    font-size: 2.2em;
+}
+#custom-prefix {
+    margin-right: .5em;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -66,13 +89,7 @@ button:hover {
     margin-right: 0;
 }
 
-/* If window-title is the rightmost module, give it some extra right margin */
-#sway-window {
-    margin-right: 1em;
-    color: green;
-}
-
 #privacy {
     color: white;
-    background-color: #eb4d4b;
+    background-color: #EB4D4B;
 }
