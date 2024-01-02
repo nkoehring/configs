@@ -1,0 +1,33 @@
+[[language]]
+name = "html"
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'<' = '>'
+
+[language-server.efm]
+command = "efm-langserver"
+config.documentFormatting = true
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+config.hostInfo = "helix"
+
+[[language]]
+name = "typescript"
+auto-format = true
+language-servers = [
+  { name = "efm", only-features = ["format", "diagnostics"] },
+  { name = "typescript-language-server", except-features = ["format", "diagnostics"] },
+]
+
+[[language]]
+name = "v"
+auto-format = true
+file-types = ["v"]
+roots = ["v.mod"]

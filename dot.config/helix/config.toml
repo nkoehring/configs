@@ -1,12 +1,13 @@
-theme = "pop-dark"
+theme = "everforest_dark"
 
 [editor]
-line-number = "absolute"
-mouse = true
-bufferline = "multiple"
-text-width = 120
 cursorline = true
-rulers = [120]
+bufferline = "multiple"
+
+[editor.statusline]
+left = ["mode", "file-name", "spinner"]
+center = ["diagnostics"]
+right = ["selections", "primary-selection-length", "file-type", "file-encoding", "position-percentage", "position"]
 
 [editor.cursor-shape]
 insert = "bar"
@@ -14,28 +15,41 @@ normal = "block"
 select = "underline"
 
 [editor.indent-guides]
-character = "╎"
 render = true
+character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[editor.whitespace]
+render = "all"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+tab = "→"
+newline = "¬" #"⏎"
+tabpad = "·"  # Tabs will look like "→···" (depending on tab width)
 
 [editor.lsp]
-auto-signature-help = true
+enable = true
 display-messages = true
+auto-signature-help = true
+display-signature-help-docs = true
+display-inlay-hints = true
+snippets = true
 
-[editor.file-picker]
-hidden = false
-
-[editor.statusline]
-left = ["mode", "spinner", "version-control", "file-name"]
+[editor.soft-wrap]
+enable = true
+max-wrap = 20
+max-indent-retain = 40
+wrap-indicator = "↪"
+wrap-at-text-width = false
 
 [keys.normal]
-"A-," = "goto_previous_buffer"
-"A-." = "goto_next_buffer"
-"A-w" = ":buffer-close"
-"A-/" = "repeat_last_motion"
-
-A-x = "extend_to_line_bounds"
-X = ["extend_line_up", "extend_to_line_bounds"]
+X = "extend_line_above"
+D = "delete_char_backward"
+q = "move_prev_word_start"
+Q = "move_prev_long_word_start"
 
 [keys.select]
-A-x = "extend_to_line_bounds"
-X = ["extend_line_up", "extend_to_line_bounds"]
+q = "extend_prev_word_start"
+Q = "extend_prev_long_word_start"
