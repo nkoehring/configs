@@ -54,25 +54,26 @@ command = "v"
 args = ["ls", "--stdio"]
 config.hostInfo = "helix"
 
-[[language]]
-name = "html"
-[language.auto-pairs]
-'(' = ')'
-'{' = '}'
-'[' = ']'
-'"' = '"'
-'`' = '`'
-'<' = '>'
+[language-server.scls]
+command = "simple-completion-language-server"
+
+[language-server.scls.config]
+max_completion_items = 10     # set max completion results len for each group: words, snippets, unicode-input
+snippets_first = true         # completions will return before snippets by default
+feature_words = true          # enable completion by word
+feature_snippets = true       # enable snippets
+feature_unicode_input = true  # enable "unicode input"
+feature_paths = true          # enable path completion
 
 [[language]]
 name = "typescript"
 auto-format = true
-language-servers = [ "typescript-language-server", "eslint", "emmet-ls", "gpt" ]
+language-servers = [ "scls", "typescript-language-server", "eslint", "emmet-ls", "gpt" ]
 formatter = { command = "prettier", args = [ "--parser", "typescript" ] }
 
 [[language]]
 name = "javascript"
-language-servers = [ "typescript-language-server", "eslint", "emmet-ls", "gpt" ]
+language-servers = [ "scls", "typescript-language-server", "eslint", "emmet-ls", "gpt" ]
 formatter = { command = "prettier", args = [ "--parser", "typescript" ] }
 auto-format = true
 
@@ -83,13 +84,21 @@ auto-format = true
 
 [[language]]
 name = "html"
-language-servers = [ "vscode-html-language-server", "emmet-ls", "gpt" ]
+language-servers = [ "scls", "vscode-html-language-server", "emmet-ls", "gpt" ]
 formatter = { command = 'prettier', args = ["--parser", "html"] }
 auto-format = true
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+"'" = "'"
+'`' = '`'
+'<' = '>'
 
 [[language]]
 name = "css"
-language-servers = [ "vscode-css-language-server", "emmet-ls", "gpt" ]
+language-servers = [ "scls", "vscode-css-language-server", "emmet-ls", "gpt" ]
 formatter = { command = 'prettier', args = ["--parser", "css"] }
 auto-format = true
 
@@ -99,14 +108,22 @@ auto-format = true
 scope = "source.vue"
 injection-regex = "vue"
 file-types = ["vue"]
-language-servers = [ "vue-language-server", "eslint", "gpt" ]
+language-servers = [ "scls", "vue-language-server", "eslint", "gpt" ]
 formatter = {command = 'prettier', args= ["--parser", "vue"]}
 roots = ["package.json", "vue.config.js", ".prettierrc.json"]
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+"'" = "'"
+'`' = '`'
+'<' = '>'
 
 [[language]]
 name = "v"
 auto-format = true
-language-servers = ["vls"]
+language-servers = [ "scls", "vls" ]
 file-types = ["v"]
 roots = ["v.mod"]
 
@@ -114,3 +131,7 @@ roots = ["v.mod"]
 name = "zig"
 auto-format = true
 file-types = ["zig", "c", "cpp", "h", "hpp"]
+
+[[language]]
+name = "git-commit"
+language-servers = [ "scls" ]
