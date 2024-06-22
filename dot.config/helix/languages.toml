@@ -1,13 +1,6 @@
-[[language]]
-name = "html"
-
-[language.auto-pairs]
-'(' = ')'
-'{' = '}'
-'[' = ']'
-'"' = '"'
-'`' = '`'
-'<' = '>'
+[language-server.gpt]
+command = "helix-gpt"
+args = ["--stdio", "--handler codeium"]
 
 [language-server.emmet-ls]
 command = "emmet-ls"
@@ -47,24 +40,39 @@ command = "typescript-language-server"
 args = ["--stdio"]
 config.hostInfo = "helix"
 config.plugins = [
-  { name = "@vue/typescript-plugin", location = "/home/normankoehring/.nvm/versions/node/v20.9.0/lib/node_modules/@vue/typescript-plugin", languages = ["javascript", "typescript", "vue"] }
+  { name = "@vue/typescript-plugin", location = "/home/normankoehring/.nvm/versions/node/v20.12.2/lib/node_modules/@vue/typescript-plugin", languages = ["javascript", "typescript", "vue"] }
 ]
 
 [language-server.vue-language-server]
 command = "vue-language-server"
 args = ["--stdio"]
 config.hostInfo = "helix"
-config.typescript = { tsdk = "/home/normankoehring/.nvm/versions/node/v20.9.0/lib/node_modules/typescript/lib" }
+config.typescript = { tsdk = "/home/normankoehring/.nvm/versions/node/v20.12.2/lib/node_modules/typescript/lib" }
+
+[language-server.vls]
+command = "v"
+args = ["ls", "--stdio"]
+config.hostInfo = "helix"
+
+[[language]]
+name = "html"
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'<' = '>'
 
 [[language]]
 name = "typescript"
 auto-format = true
-language-servers = [ "typescript-language-server", "eslint", "emmet-ls" ]
+language-servers = [ "typescript-language-server", "eslint", "emmet-ls", "gpt" ]
 formatter = { command = "prettier", args = [ "--parser", "typescript" ] }
 
 [[language]]
 name = "javascript"
-language-servers = [ "typescript-language-server", "eslint", "emmet-ls" ]
+language-servers = [ "typescript-language-server", "eslint", "emmet-ls", "gpt" ]
 formatter = { command = "prettier", args = [ "--parser", "typescript" ] }
 auto-format = true
 
@@ -75,13 +83,13 @@ auto-format = true
 
 [[language]]
 name = "html"
-language-servers = [ "vscode-html-language-server", "emmet-ls" ]
+language-servers = [ "vscode-html-language-server", "emmet-ls", "gpt" ]
 formatter = { command = 'prettier', args = ["--parser", "html"] }
 auto-format = true
 
 [[language]]
 name = "css"
-language-servers = [ "vscode-css-language-server", "emmet-ls" ]
+language-servers = [ "vscode-css-language-server", "emmet-ls", "gpt" ]
 formatter = { command = 'prettier', args = ["--parser", "css"] }
 auto-format = true
 
@@ -91,12 +99,18 @@ auto-format = true
 scope = "source.vue"
 injection-regex = "vue"
 file-types = ["vue"]
-language-servers = [ "vue-language-server", "eslint"]
+language-servers = [ "vue-language-server", "eslint", "gpt" ]
 formatter = {command = 'prettier', args= ["--parser", "vue"]}
 roots = ["package.json", "vue.config.js", ".prettierrc.json"]
 
 [[language]]
 name = "v"
 auto-format = true
+language-servers = ["vls"]
 file-types = ["v"]
 roots = ["v.mod"]
+
+[[language]]
+name = "zig"
+auto-format = true
+file-types = ["zig", "c", "cpp", "h", "hpp"]

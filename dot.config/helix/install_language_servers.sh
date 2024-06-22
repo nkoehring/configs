@@ -1,2 +1,2 @@
 #!/bin/sh
-npm i -g vscode-langservers-extracted typescript-language-server emmet-ls @vue/language-server yaml-language-server
+npm i -g typescript typescript-language-server vscode-langservers-extracted emmet-ls @vue/language-server yaml-language-server
