@@ -19,15 +19,20 @@ render = true
 character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
 skip-levels = 1
 
-[editor.whitespace]
-render = "all"
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+nbsp = "all"
+nnbsp = "all"
+newline = "all"
 
 [editor.whitespace.characters]
 space = "·"
 nbsp = "⍽"
-tab = "→"
-newline = "¬" #"⏎"
-tabpad = "·"  # Tabs will look like "→···" (depending on tab width)
+nnbsp = "␣"
+tab = "⇥" # "→"
+newline = "⮒" # "¬" #"⏎"
+tabpad = "·" # Tabs will look like "→···" (depending on tab width)
 
 [editor.lsp]
 enable = true

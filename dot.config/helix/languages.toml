@@ -20,6 +20,7 @@ run = "onType"
 validate = "on"
 experimental = {}
 problems = { shortenToSingleLine = false }
+provideFormatter = true
 
 [language-server.eslint.config.codeAction]
 disableRuleComment = { enable = true, location = "separateLine" }
@@ -68,12 +69,12 @@ feature_paths = true          # enable path completion
 [[language]]
 name = "typescript"
 auto-format = true
-language-servers = [ "scls", "typescript-language-server", "eslint", "emmet-ls", "gpt" ]
+language-servers = [ "typescript-language-server", "eslint", "emmet-ls", "scls", "gpt" ]
 formatter = { command = "prettier", args = [ "--parser", "typescript" ] }
 
 [[language]]
 name = "javascript"
-language-servers = [ "scls", "typescript-language-server", "eslint", "emmet-ls", "gpt" ]
+language-servers = [ "typescript-language-server", "eslint", "emmet-ls", "scls", "gpt" ]
 formatter = { command = "prettier", args = [ "--parser", "typescript" ] }
 auto-format = true
 
@@ -84,7 +85,7 @@ auto-format = true
 
 [[language]]
 name = "html"
-language-servers = [ "scls", "vscode-html-language-server", "emmet-ls", "gpt" ]
+language-servers = [ "vscode-html-language-server", "emmet-ls", "scls", "gpt" ]
 formatter = { command = 'prettier', args = ["--parser", "html"] }
 auto-format = true
 [language.auto-pairs]
@@ -98,7 +99,7 @@ auto-format = true
 
 [[language]]
 name = "css"
-language-servers = [ "scls", "vscode-css-language-server", "emmet-ls", "gpt" ]
+language-servers = [ "vscode-css-language-server", "scls", "gpt" ]
 formatter = { command = 'prettier', args = ["--parser", "css"] }
 auto-format = true
 
