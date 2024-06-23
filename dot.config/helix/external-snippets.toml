@@ -1,0 +1,64 @@
+[[sources]]
+name = "friendly-snippets" 
+git = "https://github.com/rafamadriz/friendly-snippets.git"
+
+[[sources.paths]]
+scope = ["shell"] 
+path = "snippets/shell/shell.json" 
+
+[[sources.paths]]
+scope = ["rust"] 
+path = "snippets/rust/rust.json" 
+
+[[sources.paths]]
+scope = ["ruby"] 
+path = "snippets/ruby/ruby.json" 
+[[sources.paths]]
+scope = ["ruby"] 
+path = "snippets/frameworks/rails.json" 
+
+[[sources.paths]]
+scope = ["python"] 
+path = "snippets/python/python.json" 
+
+[[sources.paths]]
+scope = ["php"] 
+path = "snippets/php/php.json" 
+
+[[sources.paths]]
+scope = ["latex"] 
+path = "snippets/latex/latex-snippets.json" 
+
+[[sources.paths]]
+scope = ["javascript"] 
+path = "snippets/javascript/javascript.json" 
+[[sources.paths]]
+scope = ["javascript"] 
+path = "snippets/javascript/jsdoc.json" 
+
+[[sources.paths]]
+scope = ["typescript"] 
+path = "snippets/javascript/typescript.json" 
+[[sources.paths]]
+scope = ["typescript"] 
+path = "snippets/javascript/tsdoc.json" 
+
+[[sources.paths]]
+scope = ["docker"] 
+path = "snippets/docker/docker-compose.json" 
+[[sources.paths]]
+scope = ["docker"] 
+path = "snippets/docker/docker_file.json" 
+
+[[sources.paths]]
+scope = ["vue"] 
+path = "snippets/frameworks/vue/vue.json" 
+[[sources.paths]]
+scope = ["vue"] 
+path = "snippets/frameworks/vue/html.json" 
+[[sources.paths]]
+scope = ["vue"] 
+path = "snippets/frameworks/vue/script.json" 
+[[sources.paths]]
+scope = ["vue"] 
+path = "snippets/frameworks/vue/style.json" 

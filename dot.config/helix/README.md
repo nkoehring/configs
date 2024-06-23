@@ -10,7 +10,15 @@ Language Servers to install to get the config to work as is:
 
 ```sh
 cargo install --git https://github.com/estin/simple-completion-language-server.git
+# after setting up the helix config, run:
+simple-completion-language-server fetch-external-snippets
+# and optionally validate the snippets with
+simple-completion-language-server validate-snippets
+simple-completion-language-server validate-unicode-input
 ```
+
+This LS uses snippets and mappings for completions. My config uses the suggested [friendly-snippets](https://github.com/rafamadriz/friendly-snippets/) and [vim-unicode-snippets](https://github.com/danielwe/vim-unicode-snippets/blob/master/snippets/_.snippets).
+
 
 ### Web development
 
