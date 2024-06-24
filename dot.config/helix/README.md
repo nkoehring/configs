@@ -39,6 +39,8 @@ wget https://github.com/leona/helix-gpt/releases/download/0.31/helix-gpt-0.31-x8
 
 Vuejs, Typescript, Javascript, HTML, CSS
 
+Inspired by https://dev.to/morlinbrot/configure-helix-for-typescript-eslint-prettierdprint-582c
+
 ```sh
 # vscode-langservers-extracted includes LSs for html, css, json, markdown and eslint
 # typescript runtime should be installed globally to make the typescript and vue language servers work
