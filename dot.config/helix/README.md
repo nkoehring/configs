@@ -19,6 +19,21 @@ simple-completion-language-server validate-unicode-input
 
 This LS uses snippets and mappings for completions. My config uses the suggested [friendly-snippets](https://github.com/rafamadriz/friendly-snippets/) and [vim-unicode-snippets](https://github.com/danielwe/vim-unicode-snippets/blob/master/snippets/_.snippets).
 
+"Smart" Completions, aka LLM support
+
+This config uses [helix-gpt](https://github.com/leona/helix-gpt/) to integrate Codeium smart completions. Please also check out [LSP-AI](https://github.com/SilasMarvin/lsp-ai/) as an alternative, that supports local inference with models like [stable-code-3b](https://huggingface.co/stabilityai/stable-code-3b) via llama.cpp.
+In case you need to fetch the Codeium API key (which is weirdly not possible directly via their web interface), log into their web interface and open [the vim plugin api key page](https://www.codeium.com/profile?response_type=token&redirect_uri=vim-show-auth-token&state=a&scope=openid%20profile%20email&redirect_parameters_type=query). Then copy and paste the API key either into the config or set it up as environment variable `CODEIUM_API_KEY` (I have a ~/.env file for such keys, that I source in .profile to avoid publishing them in my repository).
+
+To install helix-gpt, please refer to [the readme](https://github.com/leona/helix-gpt/tree/master?tab=readme-ov-file#install). I use it "without bun", by downloading a release version and throwing the binary into my local bin folder:
+
+```sh
+# version 0.31 was newest at the time of writing
+wget https://github.com/leona/helix-gpt/releases/download/0.31/helix-gpt-0.31-x86_64-linux.tar.gz \
+-O /tmp/helix-gpt.tar.gz \
+&& tar -zxvf /tmp/helix-gpt.tar.gz \
+&& mv helix-gpt-0.31-x86_64-linux ~/.local/bin/helix-gpt \
+&& chmod +x ~/.local/bin/helix-gpt
+```
 
 ### Web development
 
