@@ -1,6 +1,6 @@
 [language-server.gpt]
 command = "helix-gpt"
-args = ["--stdio", "--handler codeium"]
+args = ["--handler", "codeium", "--logFile", "/home/n/.cache/helix/helix-gpt.log"]
 
 [language-server.emmet-ls]
 command = "emmet-ls"
@@ -41,14 +41,14 @@ command = "typescript-language-server"
 args = ["--stdio"]
 config.hostInfo = "helix"
 config.plugins = [
-  { name = "@vue/typescript-plugin", location = "/home/normankoehring/.nvm/versions/node/v20.12.2/lib/node_modules/@vue/typescript-plugin", languages = ["javascript", "typescript", "vue"] }
+  { name = "@vue/typescript-plugin", location = "/home/n/.nvm/versions/node/v20.12.2/lib/node_modules/@vue/typescript-plugin", languages = ["javascript", "typescript", "vue"] }
 ]
 
 [language-server.vue-language-server]
 command = "vue-language-server"
 args = ["--stdio"]
 config.hostInfo = "helix"
-config.typescript = { tsdk = "/home/normankoehring/.nvm/versions/node/v20.12.2/lib/node_modules/typescript/lib" }
+config.typescript = { tsdk = "/home/n/.nvm/versions/node/v20.12.2/lib/node_modules/typescript/lib" }
 
 [language-server.vls]
 command = "v"
@@ -109,7 +109,7 @@ auto-format = true
 scope = "source.vue"
 injection-regex = "vue"
 file-types = ["vue"]
-language-servers = [ "scls", "vue-language-server", "eslint", "gpt" ]
+language-servers = [ "vue-language-server", "eslint", "scls", "gpt" ]
 formatter = {command = 'prettier', args= ["--parser", "vue"]}
 roots = ["package.json", "vue.config.js", ".prettierrc.json"]
 [language.auto-pairs]
