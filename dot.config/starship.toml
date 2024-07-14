@@ -74,11 +74,13 @@ $terraform\
 $vlang\
 $vagrant\
 $zig\
-[ ](fg:color_fg0 bg:color_bg3)\
+[ ](fg:color_blue bg:color_bg3)\
+$package\
 $memory_usage\
 $custom\
 $jobs\
 $container\
+[ ](fg:color_aqua bg:color_blue)\
 """
 
 add_newline = true
@@ -86,6 +88,7 @@ palette = 'gruvbox_dark'
 
 [palettes.gruvbox_dark]
 color_fg0 = '#fbf1c7'
+color_fg1 = '#b9b0a0'
 color_bg1 = '#3c3836'
 color_bg2 = '#444444'
 color_bg3 = '#665c54'
@@ -147,7 +150,7 @@ format = "[$user]($style) ▻ "
 disabled = false
 
 [directory]
-home_symbol = "󰋜 "
+home_symbol = " 󰋜  "
 truncation_length = 3
 truncation_symbol = "…/"
 truncate_to_repo = true
@@ -165,12 +168,11 @@ format = '[$path]($style)[$read_only]($read_only_style)'
 
 [cmd_duration]
 min_time = 500
-format = "[$duration ](italic bright-yellow)"
+format = "[ $duration ](italic bright-yellow)"
 
 [jobs]
-format = "[ $symbol$number]($style)"
-style = "white"
-symbol = "[▶ ](blue italic)"
+format = '[ job(s \($number\)) ]($style)'
+style = "fg:color_fg1 bg:color_blue"
 
 [localip]
 ssh_only = true
@@ -226,112 +228,137 @@ renamed = "◎◦"
 deleted = "✕ "
 
 [deno]
-format = " deno [∫ $version](blue italic)"
+symbol = "🦕 "
+style = "fg:color_fg1 bg:color_bg3"
 version_format = "${major}.${minor}"
+format = "[ ${symbol}${version} ]($style)"
 
 [lua]
-format = " lua [${symbol}${version}]($style)"
-symbol = "⨀ "
-style = "italic bright-yellow"
+symbol = " "
+style = "fg:color_fg1 bg:color_bg3"
+format = "[ ${symbol}${version} ]($style)"
 
 [nodejs]
-format = "[ ${symbol}${version} ]($style)"
-symbol = "[ ](color_fg0 bg:color_bg3)"
-detect_files = ["package-lock.json", "yarn.lock"]
+symbol = " "
+style = "fg:color_fg1 bg:color_bg3"
 version_format = "${major}.${minor}"
-style = "italic color_fg0 bg:color_bg3"
+format = "[ ${symbol}${version} ]($style)"
+detect_files = ["package-lock.json", "yarn.lock", "pnpm-lock.json"]
 
 [python]
-format = "[${symbol}${version}]($style)"
-symbol = "[ ](italic bright-blue)"
+symbol = " "
+style = "fg:color_fg1 bg:color_bg3"
 version_format = "${major}.${minor}"
-style = "italic bright-yellow"
+format = "[ $symbol($version) ]($style)"
 
 [ruby]
-format = " rb [${symbol}${version}]($style)"
-symbol = "◆ "
+symbol = " "
+style = "fg:color_fg1 bg:color_bg3"
 version_format = "${major}.${minor}"
-style = "italic red"
+format = "[ $symbol($version) ]($style)"
 
 [rust]
-format = " rs [$symbol$version]($style)"
-symbol = "⊃ "
+symbol = " "
+style = "fg:color_fg1 bg:color_bg3"
 version_format = "${major}.${minor}"
-style = "italic red"
+format = "[ $symbol($version) ]($style)"
 
 [package]
-format = " pkg [$symbol$version]($style)"
+symbol = "📦 "
+style = "fg:color_fg1 bg:color_blue"
 version_format = "${major}.${minor}"
-symbol = "◫ "
-style = "bright-yellow italic"
+format = "[ $symbol($version) ]($style)"
 
 [swift]
-format = " sw [${symbol}${version}]($style)"
-symbol = "◁ "
-style = "italic bright-red"
+symbol = " "
+style = "fg:color_fg1 bg:color_bg3"
 version_format = "${major}.${minor}"
+format = "[ $symbol($version) ]($style)"
 
 [aws]
-format = " aws [$symbol $profile $region]($style)"
-style = "italic blue"
-symbol = "▲ "
+symbol = " "
+format = "[ $symbol $profile $region ]($style)"
+style = "fg:color_fg1 bg:color_bg3"
 
 [buf]
-symbol = "■ "
-format = " buf [$symbol $version $buf_version]($style)"
+symbol = " "
+format = "[ buf $symbol ($version )$buf_version ]($style)"
+style = "fg:color_fg1 bg:color_bg3"
 
 [c]
 symbol = "∁ "
-format = " c [$symbol($version(-$name))]($style)"
+style = "fg:color_fg1 bg:color_bg3"
+format = "[ $symbol($version(-$name))]($style)"
 
 [conda]
 symbol = "◯ "
-format = " conda [$symbol$environment]($style)"
+style = "fg:color_fg1 bg:color_bg3"
+format = "[ conda $symbol$environment]($style)"
 
 [dart]
-symbol = "◁◅ "
-format = " dart [$symbol($version )]($style)"
+symbol = " "
+style = "fg:color_fg1 bg:color_bg3"
+format = "[ $symbol($version) ]($style)"
 
 [docker_context]
-symbol = "◧ "
-format = " docker [$symbol$context]($style)"
+symbol = " "
+format = "[ $symbol$context ]($style)"
 
 [elixir]
-symbol = "△ "
-format = " exs [$symbol $version OTP $otp_version ]($style)"
+symbol = " "
+style = "fg:color_fg1 bg:color_bg3"
+format = "[ $symbol $version OTP $otp_version ]($style)"
 
 [elm]
-symbol = "◩ "
-format = " elm [$symbol($version )]($style)"
+symbol = " "
+style = "fg:color_fg1 bg:color_bg3"
+format = "[ $symbol($version) ]($style)"
 
 [golang]
-symbol = "∩ "
-format = " go [$symbol($version )]($style)"
+symbol = "󰟓 "
+style = "fg:color_fg1 bg:color_bg3"
+format = "[ $symbol($version) ]($style)"
 
 [haskell]
-symbol = "❯λ "
-format = " hs [$symbol($version )]($style)"
+symbol = "󰲒 "
+style = "fg:color_fg1 bg:color_bg3"
+format = "[ $symbol($version) ]($style)"
 
 [java]
-symbol = "∪ "
-format = " java [${symbol}(${version} )]($style)"
+symbol = "󰬷 "
+style = "fg:color_fg1 bg:color_bg3"
+format = "[ $symbol($version) ]($style)"
 
 [julia]
-symbol = "◎ "
-format = " jl [$symbol($version )]($style)"
+symbol = " "
+style = "fg:color_fg1 bg:color_bg3"
+format = "[ $symbol($version) ]($style)"
 
 [memory_usage]
 symbol = "▪▫▪ "
 format = " mem [${ram}( ${swap})]($style)"
 
 [nim]
-symbol = "▴▲▴ "
-format = " nim [$symbol($version )]($style)"
+symbol = " "
+style = "fg:color_fg1 bg:color_bg3"
+format = "[ $symbol($version) ]($style)"
 
 [nix_shell]
-symbol = "⊛ "
-format = " nix [$symbol$state $name]($style)"
+symbol = "󱄅 "
+style = "fg:color_fg1 bg:color_bg3"
+format = "[ $symbol$state $name]($style)"
 
 [spack]
 symbol = "◇ "
-format = " spack [$symbol$environment]($style)"
+style = "fg:color_fg1 bg:color_bg3"
+format = "[ spack $symbol$environment ]($style)"
+
+[vlang]
+symbol = "V"
+style = "fg:color_fg1 bg:color_bg3"
+format = "[ $symbol($version) ]($style)"
+ 
+[zig]
+symbol = " "
+style = "fg:color_fg1 bg:color_bg3"
+format = "[ $symbol($version) ]($style)"
