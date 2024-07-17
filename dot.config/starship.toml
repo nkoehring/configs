@@ -202,11 +202,11 @@ empty_symbol = "[󰂎](italic red)"
 
 [[battery.display]]
 threshold = 40
-style = "dimmed yellow"
+style = "fg:color_yellow bg:color_bg3"
 
 [[battery.display]]
 threshold = 70
-style = "dimmed white"
+style = "fg:color_fg1 bg:color_bg3"
 
 [git_branch]
 format = "[󰊢 $branch(:$remote_branch)]($style)"
