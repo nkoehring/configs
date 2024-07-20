@@ -94,7 +94,7 @@ color_bg2 = '#444444'
 color_bg3 = '#665c54'
 color_blue = '#458588'
 color_aqua = '#689d6a'
-color_green = '#98971a'
+color_green = '#68971a'
 color_orange = '#d65d0e'
 color_purple = '#b16286'
 color_red = '#cc241d'
@@ -194,11 +194,10 @@ map_symbol = true
 
 [battery]
 format = "[ $percentage $symbol]($style)"
-full_symbol = "[󱊣](italic green)"
-charging_symbol = "[󱟠](italic green)"
-discharging_symbol = "[󱟞](italic)"
-unknown_symbol = "[󱃌](italic)"
-empty_symbol = "[󰂎](italic red)"
+charging_symbol = "[ 󱟠 ](italic fg:color_fg0 bg:color_green)"
+discharging_symbol = "[ 󱟞 ](italic fg:color_fg0 bg:color_bg3)"
+unknown_symbol = "[ 󱃌 ](italic fg:color_fg0 bg:color_bg3)"
+empty_symbol = "[ 󰂎 ](italic fg:color_fg0 bg:color_red)"
 
 [[battery.display]]
 threshold = 40
