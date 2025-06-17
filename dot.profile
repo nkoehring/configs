@@ -19,6 +19,12 @@ share_file () {
   curl -F "file=@$1" https://0x0.st
 }
 
+nps () {
+  NPS_TEMP=`mktemp`
+  [[ "$1" ]] && NPS_SERVER="$1" || NPS_SERVER="nightfall.city" # poor mans ternary?
+  $EDITOR $NPS_TEMP && echo '.' >> $NPS_TEMP && nc $NPS_SERVER 1915 < $NPS_TEMP
+}
+
 # randomize arguments, needs to be attached at the end of the argument list (eg type mplayer *.mp3 and press ctrl+s)
 bindkey -s  '^S' '(oe:REPLY=\\$RANDOM:)'
 
@@ -51,17 +57,34 @@ then
   bat $TODO
 fi
 
-ZELLIJ_AUTO_ATTACH=true
-ZELLIJ_AUTO_EXIT=false
+TERMINAL_MULTIPLEXER=tmux # or zellij
+MP_AUTO_ATTACH=true
+MP_AUTO_EXIT=false
 
-if [[ -z "$ZELLIJ" ]]; then
-    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
-        zellij attach -c
+if [[ "$TERMINAL_MULTIPLEXER" == "zellij" ]]; then
+  if [[ -z "$ZELLIJ" ]]; then
+    if [[ "$MP_AUTO_ATTACH" == "true" ]]; then
+      zellij attach -c
     else
-        zellij
+      zellij
     fi
 
-    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
-        exit
+    if [[ "$MP_AUTO_EXIT" == "true" ]]; then
+      exit
     fi
+  fi
+fi
+
+if [[ "$TERMINAL_MULTIPLEXER" == "tmux" ]]; then
+  if [[ -z "$TMUX" ]]; then
+    if [[ "$MP_AUTO_ATTACH" == "true" ]]; then
+      tmux attach || tmux
+    else
+      tmux
+    fi
+
+    if [[ "$MP_AUTO_EXIT" == "true" ]]; then
+      exit
+    fi
+  fi
 fi

@@ -18,7 +18,6 @@ if ! zgenom saved; then
   zgenom compile "$HOME/.zshrc"
 fi
 
-source ~/.config/zsh/koehr.theme.zsh
 setopt HIST_IGNORE_DUPS
 
 COMPLETION_WAITING_DOTS="true"
@@ -26,3 +25,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 ZSH_HIGHLIGHT_PATTERNS+=('rm -fr*' 'fg=white,bold,bg=red')
 
 source ~/.profile
+
+#source ~/.config/zsh/koehr.theme.zsh
+# lets give starship a try
+eval "$(starship init zsh)"
