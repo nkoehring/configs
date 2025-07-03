@@ -1,5 +1,5 @@
-set -g default-terminal "st-256color"
-set -ga terminal-overrides ",st-256color:Tc"
+set -g default-terminal "tmux-256color"
+set-option -ga terminal-overrides ",foot:Tc"
 set -g escape-time 0
 set -g mouse on
 
@@ -17,6 +17,11 @@ bind-key C-a last-window
 bind-key Space next-window
 bind-key C-Space previous-window
 
+# open windows in current directory
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+
 bind-key Tab select-pane -t :.+ \; swap-pane -U
 
 bind r source-file ~/.tmux.conf
@@ -29,7 +34,7 @@ set-window-option -g xterm-keys on
 # allow set-titles to change the window title under st
 # http://opennomad.com/content/goodbye-screen-hello-tmux
 # http://stackoverflow.com/questions/15195624
-set-option -ga terminal-overrides ',st-256color:smkx=\E='
+# set-option -ga terminal-overrides ',st-256color:smkx=\E='
 
 
 # status bar
