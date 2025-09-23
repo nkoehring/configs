@@ -97,7 +97,27 @@ for i = index_offset, 9 do
   })
 end
 
-config.window_background_opacity = 0
-config.win32_system_backdrop = "Tabbed"
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  config.window_background_opacity = 0
+  config.win32_system_backdrop = "Tabbed"
+end
+
+if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
+  config.window_decorations = "RESIZE"
+  config.window_padding = {
+    left = 0,
+    right = 0,
+    top = 0,
+    bottom = 0,
+  }
+  config.window_background_opacity = 0.95
+  config.window_background_gradient = {
+    colors = { '#0F0C29', '#302B63', '#24243E' },
+    orientation = 'Vertical',
+    -- preset = 'Warm',
+    interpolation = "CatmullRom", -- "Linear" -- "Basis"
+    noise = 256,
+  }
+end
 
 return config
