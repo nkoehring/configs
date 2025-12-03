@@ -13,13 +13,16 @@
     }
   },
   {
-    "context": "Editor && vim_mode == helix_normal && !menu",
+    "context": "Editor && vim_mode == insert",
     "bindings": {
-      // "j k": "vim::SwitchToNormalMode"
+      // "j k": "vim::NormalBefore"
+    }
+  },
+  {
+    "context": "Editor && (vim_mode == helix_normal || vim_mode == helix_select) && !menu",
+    "bindings": {
       "q": "vim::PreviousWordStart",
-      ",": "editor::UndoSelection",
-      "b n": "pane::ActivateNextItem",
-      "b p": "pane::ActivatePreviousItem"
+      "shift-q": ["vim::PreviousWordStart", { "ignore_punctuation": true }]
     }
   }
 ]
