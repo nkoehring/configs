@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# rbw-askpass - Use rbw as an askpass program for git
+# Usage: GIT_ASKPASS=/path/to/rbw-askpass git push
+
+prompt="$1"
+
+# Try to extract hostname and username from prompt
+# Git prompts look like:
+#   "Username for 'https://host.com':"
+#   "Password for 'https://user@host.com':"
+if [[ "$prompt" =~ https?://([^@]+)@([^/\':]+) ]]; then
+    user="${BASH_REMATCH[1]}"
+    host="${BASH_REMATCH[2]}"
+elif [[ "$prompt" =~ https?://([^/\':]+) ]]; then
+    host="${BASH_REMATCH[1]}"
+fi
+
+if [[ "$prompt" == *"Username"* ]]; then
+    rbw get "$host" --field username
+elif [[ "$prompt" == *"Password"* ]]; then
+    rbw get "$host" "$user"
+fi
