@@ -7,41 +7,93 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        }
+      },
+      "enable_lsp_tasks": true
+    }
+  },
+  "languages": {
+    "TypeScript": {
+      "indent_guides": {
+        "background_coloring": "disabled",
+        "coloring": "indent_aware",
+      },
+      "preferred_line_length": 120,
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"],
+        },
+      },
+    },
+    "TSX": {
+      "indent_guides": {
+        "background_coloring": "disabled",
+        "coloring": "indent_aware",
+      },
+      "preferred_line_length": 120,
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"],
+        },
+      },
+    },
+  },
+  "prettier": {
+    "allowed": true,
+  },
   "tab_size": 2,
   "helix_mode": true,
   "vim_mode": true,
   "theme": {
     "mode": "system",
     "light": "Gruvbox Light",
-    "dark": "Zedokai (Filter Spectrum)"
+    "dark": "Rosé Pine",
   },
   "buffer_line_height": "standard",
-  "buffer_font_family": "Monofur Nerd Font",
+  "buffer_font_family": "monofur",
   "ui_font_size": 16.0,
   "buffer_font_size": 16.0,
   "agent": {
+    "tool_permissions": {
+      "default": "allow"
+    },
     "default_profile": "write",
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "claude-sonnet-4.5"
+      "enable_thinking": true,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m2.5",
     },
-    "model_parameters": []
+    "model_parameters": [],
   },
   "wsl_connections": [
     {
       "distro_name": "archlinux",
       "user": null,
-      "projects": []
-    }
+      "projects": [],
+    },
   ],
   "terminal": {
-    "shell": "system"
+    "shell": "system",
   },
   "telemetry": {
     "diagnostics": false,
-    "metrics": false
+    "metrics": false,
   },
   "show_completions_on_input": true,
   "show_completion_documentation": true,
-  "show_edit_predictions": false
+  "show_edit_predictions": false,
 }
