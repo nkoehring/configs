@@ -29,3 +29,6 @@ source ~/.profile
 #source ~/.config/zsh/koehr.theme.zsh
 # lets give starship a try
 eval "$(starship init zsh)"
+
+# Mcfly for shell history, check out https://github.com/cantino/mcfly
+eval "$(mcfly init zsh)"
