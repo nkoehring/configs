@@ -161,6 +161,11 @@ cargo install mcfly # my terminal history search (ctrl+r) of choice
 
 # also install rpm-fusion for all the media codecs,
 # see: https://rpmfusion.org/Configuration
+
+# and terra for all the other things, like Zed
+sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+# optionally more freeworld media codec stuff
+sudo dnf install --nogpgcheck --repofrompath 'terra-mesa,https://repos.fyralabs.com/terra$releasever' terra-release-mesa
 ```
 
 
